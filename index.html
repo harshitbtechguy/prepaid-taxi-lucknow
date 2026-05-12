@@ -170,82 +170,52 @@
         </div>
     </div>
 
-    <!-- =================== POPULAR ROUTES =================== -->
-    <section class="routes-section" id="routes">
+    <!-- =================== LOCAL DESTINATIONS =================== -->
+    <section class="local-routes-section" id="routes">
         <div class="section-container">
-            <p class="section-tag reveal">🗺️ Popular Routes</p>
-            <h2 class="section-title reveal">Airport Transfers & <span class="accent">Outstation Trips</span></h2>
-            <p class="section-subtitle reveal">Pre-fixed fares from Lucknow Airport to major destinations. No hidden
-                charges.</p>
-
-            <div class="routes-grid reveal">
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="hazratganj">
-                    <div class="route-icon">🏙️</div>
-                    <div class="route-info">
-                        <h4>Airport → Hazratganj</h4>
-                        <span class="route-dist">~15 km • 25 min</span>
-                    </div>
-                    <div class="route-price">₹350</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="gomtinagar">
-                    <div class="route-icon">🏢</div>
-                    <div class="route-info">
-                        <h4>Airport → Gomti Nagar</h4>
-                        <span class="route-dist">~18 km • 30 min</span>
-                    </div>
-                    <div class="route-price">₹400</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="charbagh">
-                    <div class="route-icon">🚂</div>
-                    <div class="route-info">
-                        <h4>Airport → Charbagh Station</h4>
-                        <span class="route-dist">~12 km • 20 min</span>
-                    </div>
-                    <div class="route-price">₹300</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="kanpur">
-                    <div class="route-icon">🏭</div>
-                    <div class="route-info">
-                        <h4>Airport → Kanpur</h4>
-                        <span class="route-dist">~85 km • 1.5 hr</span>
-                    </div>
-                    <div class="route-price">₹1,800</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="ayodhya">
-                    <div class="route-icon">🛕</div>
-                    <div class="route-info">
-                        <h4>Airport → Ayodhya</h4>
-                        <span class="route-dist">~135 km • 2.5 hr</span>
-                    </div>
-                    <div class="route-price">₹2,800</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="varanasi">
-                    <div class="route-icon">🕉️</div>
-                    <div class="route-info">
-                        <h4>Airport → Varanasi</h4>
-                        <span class="route-dist">~320 km • 5.5 hr</span>
-                    </div>
-                    <div class="route-price">₹5,500</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="agra">
-                    <div class="route-icon">🏛️</div>
-                    <div class="route-info">
-                        <h4>Airport → Agra</h4>
-                        <span class="route-dist">~335 km • 5 hr</span>
-                    </div>
-                    <div class="route-price">₹5,800</div>
-                </div>
-                <div class="route-card" data-pickup="lucknow-airport" data-drop="delhi">
-                    <div class="route-icon">🏙️</div>
-                    <div class="route-info">
-                        <h4>Airport → Delhi / NCR</h4>
-                        <span class="route-dist">~530 km • 7 hr</span>
-                    </div>
-                    <div class="route-price">₹8,500</div>
-                </div>
+            <p class="section-tag reveal">📍 Local Transfers</p>
+            <h2 class="section-title reveal">Popular Local <span class="accent">Destinations</span></h2>
+            <p class="section-subtitle reveal">Quick airport transfers within Lucknow city.</p>
+            <div class="local-routes-grid reveal" id="localRoutesGrid">
+                <!-- Rendered by JS -->
             </div>
-            <p class="routes-note reveal">* Sedan rates shown. SUV & Innova rates slightly higher. Call for exact quote.
-            </p>
+            <p class="routes-note reveal">* Sedan rates shown. SUV & Innova rates slightly higher. Call for exact quote.</p>
+        </div>
+    </section>
+
+    <!-- =================== OUTSTATION ROUTES =================== -->
+    <section class="outstation-section" id="outstation">
+        <div class="section-container">
+            <p class="section-tag reveal">🗺️ Outstation & Intercity</p>
+            <h2 class="section-title reveal">Outstation & <span class="accent">Intercity Taxi Routes</span></h2>
+            <p class="section-subtitle reveal">Book direct airport taxis from Lucknow Airport to major cities, pilgrimage destinations, and nearby districts across Uttar Pradesh and North India.</p>
+
+            <!-- Category Filters -->
+            <div class="outstation-filters reveal">
+                <button class="outstation-filter-btn active" data-category="all" onclick="setOutstationFilter('all')">All Routes</button>
+                <button class="outstation-filter-btn" data-category="popular" onclick="setOutstationFilter('popular')">Popular</button>
+                <button class="outstation-filter-btn" data-category="purvanchal" onclick="setOutstationFilter('purvanchal')">Purvanchal</button>
+                <button class="outstation-filter-btn" data-category="religious" onclick="setOutstationFilter('religious')">Religious</button>
+                <button class="outstation-filter-btn" data-category="nearby" onclick="setOutstationFilter('nearby')">Nearby Districts</button>
+                <button class="outstation-filter-btn" data-category="tourist" onclick="setOutstationFilter('tourist')">Tourist Places</button>
+                <button class="outstation-filter-btn" data-category="longdistance" onclick="setOutstationFilter('longdistance')">Long Distance</button>
+            </div>
+
+            <!-- Featured Destinations -->
+            <div class="featured-routes-grid reveal" id="featuredRoutesGrid">
+                <!-- Rendered by JS -->
+            </div>
+
+            <!-- Secondary Destinations -->
+            <div class="secondary-routes-grid reveal" id="secondaryRoutesGrid">
+                <!-- Rendered by JS -->
+            </div>
+
+            <div class="view-more-wrap reveal">
+                <button class="view-more-btn" id="viewMoreRoutes" onclick="toggleViewMore()">View More Routes ↓</button>
+            </div>
+
+            <p class="routes-note reveal">* Sedan base fares shown. Ertiga & Innova fares higher. Toll charges extra on outstation routes.</p>
         </div>
     </section>
 
@@ -479,6 +449,27 @@
         </div>
     </section>
 
+    <!-- =================== SEO FOOTER LINKS =================== -->
+    <section class="seo-links-section">
+        <div class="section-container">
+            <h3 class="seo-links-title">Popular Airport Taxi Searches</h3>
+            <div class="seo-links-grid">
+                <a href="#routes">Lucknow Airport Taxi</a>
+                <a href="#routes">Airport Pickup Service</a>
+                <a href="#routes">One Way Cab Lucknow</a>
+                <a href="routes/lucknow-airport-to-ayodhya-taxi.html">Lucknow Airport to Ayodhya Taxi</a>
+                <a href="routes/lucknow-airport-to-varanasi-taxi.html">Lucknow Airport to Varanasi Cab</a>
+                <a href="routes/lucknow-airport-to-prayagraj-cab.html">Lucknow Airport to Prayagraj Taxi</a>
+                <a href="routes/lucknow-airport-to-hardoi-cab.html">Lucknow Airport to Hardoi Cab</a>
+                <a href="routes/lucknow-airport-to-sitapur-cab.html">Lucknow Airport to Sitapur Taxi</a>
+                <a href="routes/lucknow-airport-to-gorakhpur-taxi.html">Lucknow Airport to Gorakhpur Taxi</a>
+                <a href="routes/lucknow-airport-to-kanpur-taxi.html">Lucknow Airport to Kanpur Cab</a>
+                <a href="routes/lucknow-airport-to-barabanki-taxi.html">Lucknow Airport to Barabanki Taxi</a>
+                <a href="routes/lucknow-airport-to-lakhimpur-taxi.html">Lucknow Airport to Lakhimpur Taxi</a>
+            </div>
+        </div>
+    </section>
+
     <!-- =================== FOOTER =================== -->
     <footer class="footer" id="contact">
         <div class="footer-container">
@@ -494,7 +485,8 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#fleet">Our Vehicles</a></li>
-                    <li><a href="#routes">Popular Routes</a></li>
+                    <li><a href="#routes">Local Routes</a></li>
+                    <li><a href="#outstation">Outstation</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
                     <li><a href="#contact">Contact Us</a></li>
                 </ul>
@@ -502,13 +494,13 @@
             <div class="footer-routes">
                 <h4>Top Routes</h4>
                 <ul>
-                    <li>Airport → Hazratganj</li>
-                    <li>Airport → Gomti Nagar</li>
-                    <li>Airport → Charbagh</li>
-                    <li>Lucknow → Kanpur</li>
-                    <li>Lucknow → Ayodhya</li>
-                    <li>Lucknow → Varanasi</li>
-                    <li>Lucknow → Delhi</li>
+                    <li><a href="routes/lucknow-airport-to-ayodhya-taxi.html">Airport → Ayodhya</a></li>
+                    <li><a href="routes/lucknow-airport-to-kanpur-taxi.html">Airport → Kanpur</a></li>
+                    <li><a href="routes/lucknow-airport-to-varanasi-taxi.html">Airport → Varanasi</a></li>
+                    <li><a href="routes/lucknow-airport-to-prayagraj-cab.html">Airport → Prayagraj</a></li>
+                    <li><a href="routes/lucknow-airport-to-gorakhpur-taxi.html">Airport → Gorakhpur</a></li>
+                    <li><a href="routes/lucknow-airport-to-agra-taxi.html">Airport → Agra</a></li>
+                    <li><a href="routes/lucknow-airport-to-hardoi-cab.html">Airport → Hardoi</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -564,6 +556,16 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- =================== FLOATING CTAs =================== -->
+    <a href="https://wa.me/917985578937?text=Hi%2C%20I%20need%20a%20taxi%20from%20Lucknow%20Airport." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" width="28" height="28"><path fill="#fff" d="M16 0C7.16 0 0 7.16 0 16c0 2.83.74 5.48 2.03 7.78L.07 31.93l8.35-1.9A15.9 15.9 0 0016 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm8.2 22.56c-.34.96-1.7 1.76-2.76 1.99-.72.15-1.66.28-4.83-1.04-4.05-1.68-6.65-5.81-6.85-6.08-.2-.27-1.6-2.13-1.6-4.07 0-1.93 1.02-2.88 1.38-3.27.36-.39.79-.49 1.05-.49.26 0 .53 0 .76.01.24.02.57-.1.89.68.34.81 1.14 2.79 1.24 2.99.1.2.17.44.03.71-.13.27-.2.44-.4.68-.2.24-.42.53-.6.71-.2.2-.4.42-.17.82.23.4 1.03 1.7 2.21 2.75 1.52 1.36 2.8 1.78 3.2 1.98.4.2.63.17.87-.1.23-.27.99-1.16 1.26-1.56.26-.4.53-.33.89-.2.36.14 2.3 1.09 2.7 1.28.4.2.66.3.76.46.1.17.1.96-.24 1.88z"/></svg>
+    </a>
+
+    <div class="mobile-sticky-cta">
+        <a href="https://wa.me/917985578937?text=Hi%2C%20I%20need%20a%20taxi%20from%20Lucknow%20Airport." target="_blank" class="sticky-wa-btn">💬 WhatsApp</a>
+        <a href="tel:+917985578937" class="sticky-call-btn">📞 Call Now</a>
     </div>
 
     <script src="script.js"></script>

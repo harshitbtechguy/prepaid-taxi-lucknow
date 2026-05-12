@@ -1,0 +1,296 @@
+/* ============================================
+   ROUTE SEO PAGE — Shared Styles
+   Inherits variables and fonts from style.css
+   ============================================ */
+:root {
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --bg-primary: #04070d;
+    --bg-secondary: #0a1019;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-glass: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.06);
+    --border-accent: rgba(34,211,238,0.15);
+    --accent: #22d3ee;
+    --accent-dark: #0891b2;
+    --accent-light: #67e8f9;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --green: #34d399;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    --shadow-accent: 0 0 30px rgba(34,211,238,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.accent { color: var(--accent); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Navbar ─── */
+.rp-nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 14px 0;
+    background: rgba(4,7,13,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+.rp-nav .container {
+    display: flex; align-items: center; justify-content: space-between;
+}
+.rp-nav-logo {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700;
+}
+.rp-nav-links { display: flex; gap: 12px; }
+.rp-nav-links a {
+    padding: 8px 18px; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 600;
+    transition: var(--transition);
+}
+.rp-nav-back {
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+.rp-nav-back:hover { border-color: var(--border-accent); color: var(--text-primary); }
+.rp-nav-call {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #04070d;
+}
+
+/* ─── Hero ─── */
+.rp-hero {
+    padding: 140px 0 80px;
+    background: var(--bg-secondary);
+    position: relative; overflow: hidden;
+}
+.rp-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(34,211,238,0.06) 0%, transparent 70%);
+}
+.rp-hero .container { position: relative; z-index: 1; }
+.rp-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 18px;
+    background: rgba(34,211,238,0.08);
+    border: 1px solid var(--border-accent);
+    border-radius: 50px;
+    font-size: 0.8rem; color: var(--accent-light);
+    margin-bottom: 20px;
+}
+.rp-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800; line-height: 1.15;
+    letter-spacing: -1px; margin-bottom: 16px;
+}
+.rp-hero-sub {
+    font-size: 1.05rem; color: var(--text-secondary);
+    max-width: 600px; margin-bottom: 28px; line-height: 1.7;
+}
+.rp-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.rp-cta-call, .rp-cta-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 30px; border-radius: 50px;
+    font-weight: 700; font-size: 1rem;
+    transition: var(--transition);
+}
+.rp-cta-call {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #04070d;
+    box-shadow: 0 4px 20px rgba(34,211,238,0.3);
+}
+.rp-cta-call:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(34,211,238,0.5); }
+.rp-cta-wa {
+    background: #25D366; color: #fff;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+.rp-cta-wa:hover { transform: translateY(-2px); }
+
+/* ─── Route Info ─── */
+.rp-route-info { padding: 60px 0; background: var(--bg-primary); }
+.rp-info-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-bottom: 40px;
+}
+.rp-info-card {
+    padding: 24px; text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+.rp-info-card .info-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.rp-info-card .info-label {
+    font-size: 0.75rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+}
+.rp-info-card .info-value {
+    font-family: var(--font-heading);
+    font-size: 1.3rem; font-weight: 700; color: var(--accent);
+}
+
+/* ─── Fare Table ─── */
+.rp-fare-section { padding: 60px 0; background: var(--bg-secondary); }
+.rp-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem; font-weight: 700;
+    margin-bottom: 24px;
+}
+.rp-fare-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+.rp-fare-table th {
+    padding: 14px 20px; text-align: left;
+    font-family: var(--font-heading);
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--accent);
+    background: rgba(34,211,238,0.05);
+    border-bottom: 1px solid var(--border);
+}
+.rp-fare-table td {
+    padding: 14px 20px;
+    font-size: 0.9rem; color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+}
+.rp-fare-table tr:last-child td { border-bottom: none; }
+.rp-fare-table .fare-val {
+    font-family: var(--font-heading);
+    font-weight: 700; color: var(--text-primary);
+}
+
+/* ─── Why Us ─── */
+.rp-why { padding: 60px 0; background: var(--bg-primary); }
+.rp-why-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+.rp-why-card {
+    padding: 24px; background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+.rp-why-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-accent);
+}
+.rp-why-card .why-ico { font-size: 1.5rem; margin-bottom: 10px; }
+.rp-why-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem; font-weight: 600; margin-bottom: 6px;
+}
+.rp-why-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* ─── FAQ ─── */
+.rp-faq { padding: 60px 0; background: var(--bg-secondary); }
+.rp-faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.rp-faq-q {
+    width: 100%; padding: 18px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    cursor: pointer; transition: var(--transition);
+    text-align: left;
+}
+.rp-faq-q:hover { background: rgba(34,211,238,0.04); }
+.rp-faq-q .faq-arrow { transition: transform 0.3s; color: var(--accent); }
+.rp-faq-q.open .faq-arrow { transform: rotate(180deg); }
+.rp-faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 20px;
+    font-size: 0.88rem; color: var(--text-secondary);
+    line-height: 1.7; background: var(--bg-card);
+}
+.rp-faq-a.open { max-height: 300px; padding: 0 20px 18px; }
+
+/* ─── Related Routes ─── */
+.rp-related { padding: 60px 0; background: var(--bg-primary); }
+.rp-related-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+}
+.rp-related-card {
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px; background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+.rp-related-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent);
+}
+.rp-related-card .rel-icon { font-size: 1.3rem; }
+.rp-related-card .rel-info h5 {
+    font-family: var(--font-heading);
+    font-size: 0.88rem; font-weight: 600;
+}
+.rp-related-card .rel-info span { font-size: 0.74rem; color: var(--text-muted); }
+
+/* ─── Footer ─── */
+.rp-footer {
+    padding: 30px 0; text-align: center;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem; color: var(--text-muted);
+}
+
+/* ─── Mobile Sticky ─── */
+.rp-mobile-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    z-index: 998; padding: 10px 16px;
+    background: rgba(4,7,13,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-accent);
+    gap: 10px;
+}
+.rp-mobile-cta a {
+    flex: 1; text-align: center;
+    padding: 12px 0; border-radius: var(--radius-sm);
+    font-weight: 700; font-size: 0.9rem;
+}
+.rp-mobile-cta .rp-m-wa { background: #25D366; color: #fff; }
+.rp-mobile-cta .rp-m-call {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #04070d;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+    .rp-hero h1 { font-size: 1.8rem; }
+    .rp-info-grid { grid-template-columns: 1fr 1fr; }
+    .rp-fare-table { font-size: 0.85rem; }
+    .rp-nav-links .rp-nav-back span { display: none; }
+    .rp-mobile-cta { display: flex; }
+    .rp-hero { padding-bottom: 60px; }
+}
+@media (max-width: 480px) {
+    .rp-info-grid { grid-template-columns: 1fr; }
+}

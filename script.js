@@ -79,72 +79,219 @@ const vehicles = [
 
 // ─── Route Distances (km) & Fixed Fares (sedan base) ───
 const routeData = {
-    // Airport to Lucknow city areas
     "lucknow-airport-hazratganj": { km: 15, fare: 350, time: "25 min" },
     "lucknow-airport-gomtinagar": { km: 18, fare: 400, time: "30 min" },
-    "lucknow-airport-alambagh": { km: 8, fare: 200, time: "15 min" },
+    "lucknow-airport-alambagh": { km: 8, fare: 250, time: "15 min" },
     "lucknow-airport-charbagh": { km: 12, fare: 300, time: "20 min" },
     "lucknow-airport-aliganj": { km: 22, fare: 500, time: "35 min" },
     "lucknow-airport-indira-nagar": { km: 20, fare: 450, time: "30 min" },
+    "lucknow-airport-chowk": { km: 16, fare: 400, time: "28 min" },
+    "lucknow-airport-sgpgi": { km: 14, fare: 350, time: "25 min" },
+    "lucknow-airport-amausi-metro": { km: 3, fare: 150, time: "8 min" },
     "lucknow-airport-lucknow-city": { km: 16, fare: 350, time: "25 min" },
-
-    // Airport to outstation
     "lucknow-airport-kanpur": { km: 85, fare: 1800, time: "1.5 hr" },
     "lucknow-airport-agra": { km: 335, fare: 5800, time: "5 hr" },
     "lucknow-airport-varanasi": { km: 320, fare: 5500, time: "5.5 hr" },
     "lucknow-airport-allahabad": { km: 210, fare: 3800, time: "3.5 hr" },
     "lucknow-airport-ayodhya": { km: 135, fare: 2800, time: "2.5 hr" },
     "lucknow-airport-delhi": { km: 530, fare: 8500, time: "7 hr" },
-    "lucknow-airport-bareilly": { km: 260, fare: 4500, time: "4.5 hr" },
     "lucknow-airport-sultanpur": { km: 140, fare: 2800, time: "2.5 hr" },
     "lucknow-airport-raebareli": { km: 85, fare: 1800, time: "1.5 hr" },
     "lucknow-airport-unnao": { km: 55, fare: 1200, time: "1 hr" },
     "lucknow-airport-sitapur": { km: 90, fare: 1900, time: "1.5 hr" },
     "lucknow-airport-hardoi": { km: 130, fare: 2600, time: "2.5 hr" },
-    "lucknow-airport-faizabad": { km: 130, fare: 2600, time: "2.5 hr" },
-
-    // City to city (regular taxi)
-    "lucknow-city-kanpur": { km: 80, fare: 1700, time: "1.5 hr" },
-    "lucknow-city-agra": { km: 330, fare: 5700, time: "5 hr" },
-    "lucknow-city-varanasi": { km: 315, fare: 5400, time: "5.5 hr" },
-    "lucknow-city-ayodhya": { km: 130, fare: 2700, time: "2.5 hr" },
-    "lucknow-city-delhi": { km: 525, fare: 8400, time: "7 hr" },
-    "lucknow-city-allahabad": { km: 205, fare: 3700, time: "3.5 hr" },
-
-    // Within city
+    "lucknow-airport-gorakhpur": { km: 270, fare: 4800, time: "5 hr" },
+    "lucknow-airport-barabanki": { km: 30, fare: 700, time: "45 min" },
+    "lucknow-airport-lakhimpur": { km: 135, fare: 2800, time: "3 hr" },
+    "lucknow-airport-gonda": { km: 195, fare: 3800, time: "3.5 hr" },
+    "lucknow-airport-bahraich": { km: 185, fare: 3600, time: "3.5 hr" },
+    "lucknow-airport-chitrakoot": { km: 280, fare: 5000, time: "5 hr" },
     "hazratganj-gomtinagar": { km: 8, fare: 200, time: "15 min" },
     "hazratganj-charbagh": { km: 5, fare: 150, time: "10 min" },
-    "gomtinagar-charbagh": { km: 10, fare: 250, time: "18 min" },
-    "alambagh-charbagh": { km: 6, fare: 180, time: "12 min" },
     "charbagh-lucknow-airport": { km: 12, fare: 300, time: "20 min" },
-    "gomtinagar-lucknow-airport": { km: 18, fare: 400, time: "30 min" },
-    "hazratganj-lucknow-airport": { km: 15, fare: 350, time: "25 min" },
 };
+
+// ─── Local Routes ───
+const localRoutes = [
+    { name: "Hazratganj", icon: "🏙️", km: 15, time: "25 min", fare: 350, drop: "hazratganj" },
+    { name: "Gomti Nagar", icon: "🏢", km: 18, time: "30 min", fare: 400, drop: "gomtinagar" },
+    { name: "Charbagh Railway Station", icon: "🚂", km: 12, time: "20 min", fare: 300, drop: "charbagh" },
+    { name: "Alambagh", icon: "🏘️", km: 8, time: "15 min", fare: 250, drop: "alambagh" },
+    { name: "Indira Nagar", icon: "🌳", km: 20, time: "30 min", fare: 450, drop: "indira-nagar" },
+    { name: "Chowk", icon: "🕌", km: 16, time: "28 min", fare: 400, drop: "chowk" },
+    { name: "SGPGI", icon: "🏥", km: 14, time: "25 min", fare: 350, drop: "sgpgi" },
+    { name: "Amausi Metro", icon: "🚇", km: 3, time: "8 min", fare: 150, drop: "amausi-metro" },
+];
+
+// ─── Outstation Routes ───
+const outstationRoutes = [
+    // Featured
+    { name: "Ayodhya", icon: "🛕", km: 135, time: "2.5 hr", fare: 2800, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-ayodhya-taxi.html" },
+    { name: "Hardoi", icon: "🏛️", km: 130, time: "2.5 hr", fare: 2600, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-hardoi-cab.html" },
+    { name: "Sitapur", icon: "🏘️", km: 90, time: "1.5 hr", fare: 1900, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-sitapur-cab.html" },
+    { name: "Lakhimpur Kheri", icon: "🌿", km: 135, time: "3 hr", fare: 2800, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-lakhimpur-taxi.html" },
+    { name: "Barabanki", icon: "🕌", km: 30, time: "45 min", fare: 700, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-barabanki-taxi.html" },
+    { name: "Rae Bareli", icon: "🏭", km: 85, time: "1.5 hr", fare: 1800, category: "nearby", featured: true },
+    { name: "Gonda", icon: "🌾", km: 195, time: "3.5 hr", fare: 3800, category: "popular", featured: true },
+    { name: "Bahraich", icon: "🦁", km: 185, time: "3.5 hr", fare: 3600, category: "popular", featured: true },
+    { name: "Sultanpur", icon: "🏰", km: 140, time: "2.5 hr", fare: 2800, category: "popular", featured: true },
+    { name: "Prayagraj", icon: "🙏", km: 210, time: "3.5 hr", fare: 3800, category: "religious", featured: true, seoPage: "routes/lucknow-airport-to-prayagraj-cab.html" },
+    { name: "Varanasi", icon: "🕉️", km: 320, time: "5.5 hr", fare: 5500, category: "religious", featured: true, seoPage: "routes/lucknow-airport-to-varanasi-taxi.html" },
+    { name: "Gorakhpur", icon: "⛩️", km: 270, time: "5 hr", fare: 4800, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-gorakhpur-taxi.html" },
+    { name: "Kanpur", icon: "🏭", km: 85, time: "1.5 hr", fare: 1800, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-kanpur-taxi.html" },
+    { name: "Agra", icon: "🏛️", km: 335, time: "5 hr", fare: 5800, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-agra-taxi.html" },
+    { name: "Chitrakoot", icon: "⛰️", km: 280, time: "5 hr", fare: 5000, category: "religious", featured: true },
+    // Purvanchal
+    { name: "Azamgarh", icon: "🏘️", km: 280, time: "5 hr", fare: 4800, category: "purvanchal" },
+    { name: "Mau", icon: "🏘️", km: 310, time: "5.5 hr", fare: 5200, category: "purvanchal" },
+    { name: "Ballia", icon: "🏘️", km: 380, time: "6.5 hr", fare: 6500, category: "purvanchal" },
+    { name: "Deoria", icon: "🏘️", km: 310, time: "5.5 hr", fare: 5400, category: "purvanchal" },
+    { name: "Jaunpur", icon: "🕌", km: 230, time: "4 hr", fare: 4000, category: "purvanchal" },
+    { name: "Ghazipur", icon: "🏘️", km: 340, time: "6 hr", fare: 5800, category: "purvanchal" },
+    { name: "Ambedkar Nagar", icon: "🏘️", km: 170, time: "3 hr", fare: 3200, category: "purvanchal" },
+    { name: "Sant Kabir Nagar", icon: "🏘️", km: 230, time: "4 hr", fare: 4200, category: "purvanchal" },
+    { name: "Siddharthnagar", icon: "🏘️", km: 250, time: "4.5 hr", fare: 4500, category: "purvanchal" },
+    { name: "Kushinagar", icon: "☸️", km: 290, time: "5 hr", fare: 5000, category: "purvanchal" },
+    { name: "Maharajganj", icon: "🏘️", km: 290, time: "5.5 hr", fare: 5200, category: "purvanchal" },
+    // Nearby Districts
+    { name: "Unnao", icon: "🏘️", km: 55, time: "1 hr", fare: 1200, category: "nearby" },
+    { name: "Shahjahanpur", icon: "🏘️", km: 185, time: "3.5 hr", fare: 3500, category: "nearby" },
+    { name: "Fatehpur", icon: "🏘️", km: 170, time: "3 hr", fare: 3200, category: "nearby" },
+    { name: "Balrampur", icon: "🏰", km: 200, time: "4 hr", fare: 3800, category: "nearby" },
+    { name: "Shravasti", icon: "☸️", km: 175, time: "3.5 hr", fare: 3400, category: "nearby" },
+    { name: "Pilibhit", icon: "🌲", km: 260, time: "4.5 hr", fare: 4500, category: "nearby" },
+    { name: "Farrukhabad", icon: "🏘️", km: 180, time: "3.5 hr", fare: 3400, category: "nearby" },
+    { name: "Kannauj", icon: "🌹", km: 140, time: "2.5 hr", fare: 2800, category: "nearby" },
+    { name: "Etawah", icon: "🏘️", km: 220, time: "4 hr", fare: 4000, category: "nearby" },
+    // Religious
+    { name: "Mathura", icon: "🛕", km: 400, time: "6 hr", fare: 6800, category: "religious" },
+    { name: "Vrindavan", icon: "🦚", km: 410, time: "6 hr", fare: 7000, category: "religious" },
+    { name: "Vindhyachal", icon: "🙏", km: 290, time: "5 hr", fare: 5000, category: "religious" },
+    { name: "Naimisharanya", icon: "📿", km: 95, time: "2 hr", fare: 2000, category: "religious" },
+    // Tourist
+    { name: "Dudhwa National Park", icon: "🐅", km: 220, time: "4.5 hr", fare: 4200, category: "tourist" },
+    { name: "Nainital", icon: "🏔️", km: 440, time: "7 hr", fare: 7500, category: "tourist" },
+    { name: "Mussoorie", icon: "⛰️", km: 540, time: "8.5 hr", fare: 9000, category: "tourist" },
+    { name: "Haridwar", icon: "🙏", km: 480, time: "7.5 hr", fare: 8000, category: "tourist" },
+    { name: "Rishikesh", icon: "🧘", km: 500, time: "8 hr", fare: 8500, category: "tourist" },
+    // Long Distance
+    { name: "Delhi NCR", icon: "🏙️", km: 530, time: "7 hr", fare: 8500, category: "longdistance" },
+];
 
 // ─── Location Name Map ───
 const locationNames = {
     "lucknow-airport": "Lucknow Airport (Amausi)",
     "lucknow-city": "Lucknow City",
-    "hazratganj": "Hazratganj",
-    "gomtinagar": "Gomti Nagar",
-    "alambagh": "Alambagh",
-    "charbagh": "Charbagh Station",
-    "aliganj": "Aliganj",
-    "indira-nagar": "Indira Nagar",
-    "kanpur": "Kanpur",
-    "agra": "Agra",
-    "varanasi": "Varanasi",
-    "allahabad": "Prayagraj",
-    "ayodhya": "Ayodhya",
-    "delhi": "Delhi / NCR",
-    "bareilly": "Bareilly",
-    "sultanpur": "Sultanpur",
-    "raebareli": "Rae Bareli",
-    "unnao": "Unnao",
-    "sitapur": "Sitapur",
-    "hardoi": "Hardoi",
-    "faizabad": "Faizabad"
+    "hazratganj": "Hazratganj", "gomtinagar": "Gomti Nagar",
+    "alambagh": "Alambagh", "charbagh": "Charbagh Station",
+    "aliganj": "Aliganj", "indira-nagar": "Indira Nagar",
+    "chowk": "Chowk", "sgpgi": "SGPGI", "amausi-metro": "Amausi Metro",
+    "kanpur": "Kanpur", "agra": "Agra", "varanasi": "Varanasi",
+    "allahabad": "Prayagraj", "ayodhya": "Ayodhya", "delhi": "Delhi / NCR",
+    "sultanpur": "Sultanpur", "raebareli": "Rae Bareli", "unnao": "Unnao",
+    "sitapur": "Sitapur", "hardoi": "Hardoi", "gorakhpur": "Gorakhpur",
+    "barabanki": "Barabanki", "lakhimpur": "Lakhimpur Kheri",
+    "gonda": "Gonda", "bahraich": "Bahraich", "chitrakoot": "Chitrakoot",
 };
+
+// ─── WhatsApp Helper ───
+const PHONE = "917985578937";
+function waLink(route) {
+    const text = encodeURIComponent(`Hi, I want to book a taxi from Lucknow Airport to ${route}. Please share details.`);
+    return `https://wa.me/${PHONE}?text=${text}`;
+}
+
+// ─── Render Local Routes ───
+function renderLocalRoutes() {
+    const grid = document.getElementById("localRoutesGrid");
+    if (!grid) return;
+    grid.innerHTML = localRoutes.map(r => `
+        <div class="local-route-card">
+            <div class="local-route-icon">${r.icon}</div>
+            <div class="local-route-info">
+                <h4>Airport → ${r.name}</h4>
+                <span class="local-route-dist">~${r.km} km • ${r.time}</span>
+            </div>
+            <div class="local-route-fare">₹${r.fare}</div>
+            <a href="${waLink(r.name)}" target="_blank" class="local-book-btn">Book Now</a>
+        </div>
+    `).join("");
+}
+
+// ─── Render Outstation Routes ───
+let outstationFilter = "all";
+let showAllSecondary = false;
+
+function renderOutstationRoutes() {
+    const featuredGrid = document.getElementById("featuredRoutesGrid");
+    const secondaryGrid = document.getElementById("secondaryRoutesGrid");
+    if (!featuredGrid) return;
+
+    const featured = outstationRoutes.filter(r => r.featured);
+    const secondary = outstationRoutes.filter(r => !r.featured);
+
+    // Featured cards
+    const filteredFeatured = outstationFilter === "all" ? featured :
+        featured.filter(r => r.category === outstationFilter);
+    featuredGrid.innerHTML = filteredFeatured.map(r => `
+        <div class="featured-route-card">
+            <div class="featured-route-header">
+                <span class="featured-route-icon">${r.icon}</span>
+                <div class="featured-route-meta">
+                    <span>~${r.km} km</span>
+                    <span>${r.time}</span>
+                </div>
+            </div>
+            <h4 class="featured-route-name">Airport → ${r.name}</h4>
+            <div class="featured-route-fare">
+                <span class="fare-label">Sedan from</span>
+                <span class="fare-amount">₹${r.fare.toLocaleString("en-IN")}</span>
+            </div>
+            <div class="featured-route-actions">
+                <a href="${waLink(r.name)}" target="_blank" class="featured-book-btn">📱 Book Taxi</a>
+                ${r.seoPage ? `<a href="${r.seoPage}" class="featured-info-btn">ℹ️ Details</a>` : ''}
+            </div>
+        </div>
+    `).join("");
+
+    // Secondary cards
+    if (!secondaryGrid) return;
+    const filteredSecondary = outstationFilter === "all" ? secondary :
+        secondary.filter(r => r.category === outstationFilter);
+    const visibleSecondary = showAllSecondary ? filteredSecondary : filteredSecondary.slice(0, 8);
+    secondaryGrid.innerHTML = visibleSecondary.map(r => `
+        <div class="secondary-route-card">
+            <span class="secondary-route-icon">${r.icon}</span>
+            <div class="secondary-route-info">
+                <h5>${r.name}</h5>
+                <span class="secondary-route-dist">${r.time} • ₹${r.fare.toLocaleString("en-IN")}</span>
+            </div>
+            <a href="${waLink(r.name)}" target="_blank" class="secondary-book-btn">Book</a>
+        </div>
+    `).join("");
+
+    // View more button
+    const viewMoreBtn = document.getElementById("viewMoreRoutes");
+    if (viewMoreBtn) {
+        viewMoreBtn.style.display = filteredSecondary.length > 8 ? "inline-flex" : "none";
+        viewMoreBtn.textContent = showAllSecondary ?
+            "Show Less ↑" : `View ${filteredSecondary.length - 8} More Routes ↓`;
+    }
+}
+
+function setOutstationFilter(cat) {
+    outstationFilter = cat;
+    showAllSecondary = false;
+    document.querySelectorAll(".outstation-filter-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.category === cat);
+    });
+    renderOutstationRoutes();
+}
+
+function toggleViewMore() {
+    showAllSecondary = !showAllSecondary;
+    renderOutstationRoutes();
+}
 
 // ─── State ───
 let currentFilter = "all";
@@ -174,6 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
     travelDateEl.value = today;
 
     renderVehicles();
+    renderLocalRoutes();
+    renderOutstationRoutes();
     initScrollReveal();
     initParticles();
     initEventListeners();
