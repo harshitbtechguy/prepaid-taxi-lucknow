@@ -16,7 +16,7 @@ const vehicles = [
         fuel: "Diesel",
         priceKm: 10,
         priceDay: 1800,
-        image: "images/indigo.png",
+        image: "images/indigo.jpg",
         description: "Affordable and reliable airport taxi. Spacious boot for luggage, smooth diesel engine, and comfortable AC cabin. The go-to choice for budget-friendly airport transfers in Lucknow."
     },
     {
@@ -30,7 +30,7 @@ const vehicles = [
         fuel: "Petrol / Diesel",
         priceKm: 12,
         priceDay: 2200,
-        image: "images/etios.png",
+        image: "images/swift-tour.jpg",
         description: "Toyota's trusted workhorse. Excellent mileage, spacious interiors, and Toyota reliability. Ideal for solo travellers and couples heading to Lucknow city from the airport."
     },
     {
@@ -44,7 +44,7 @@ const vehicles = [
         fuel: "Petrol / CNG",
         priceKm: 11,
         priceDay: 2000,
-        image: "images/swift-tour.png",
+        image: "images/swift-tour.jpg",
         description: "India's favourite compact sedan. Fuel-efficient, clean, and well-maintained. Perfect for quick airport-to-city rides and short outstation trips from Lucknow."
     },
     {
@@ -58,7 +58,7 @@ const vehicles = [
         fuel: "Petrol / CNG",
         priceKm: 14,
         priceDay: 2800,
-        image: "images/ertiga.png",
+        image: "images/ertiga.jpg",
         description: "Best value 7-seater for families. Spacious second and third row seating with good boot space. Great for families arriving at Lucknow airport heading to Kanpur, Ayodhya, or within city."
     },
     {
@@ -72,7 +72,7 @@ const vehicles = [
         fuel: "Diesel",
         priceKm: 16,
         priceDay: 3500,
-        image: "images/innova.png",
+        image: "images/innova.jpg",
         description: "The king of highway rides. 7-seater with captain seats, powerful diesel engine, and massive boot. Perfect for families arriving at Lucknow airport heading to Kanpur, Ayodhya, or Varanasi."
     }
 ];
