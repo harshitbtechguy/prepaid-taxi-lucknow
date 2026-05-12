@@ -16,7 +16,7 @@ const vehicles = [
         fuel: "Diesel",
         priceKm: 10,
         priceDay: 1800,
-        image: "https://imgd.aeplcdn.com/664x374/cw/ec/21597/Tata-Indigo-eCS-Right-Front-Three-Quarter-82498.jpg?wm=0&q=80",
+        image: "images/indigo.png",
         description: "Affordable and reliable airport taxi. Spacious boot for luggage, smooth diesel engine, and comfortable AC cabin. The go-to choice for budget-friendly airport transfers in Lucknow."
     },
     {
@@ -30,7 +30,7 @@ const vehicles = [
         fuel: "Petrol / Diesel",
         priceKm: 12,
         priceDay: 2200,
-        image: "https://imgd.aeplcdn.com/664x374/cw/ec/20827/Toyota-Etios-Right-Front-Three-Quarter-82498.jpg?wm=0&q=80",
+        image: "images/etios.png",
         description: "Toyota's trusted workhorse. Excellent mileage, spacious interiors, and Toyota reliability. Ideal for solo travellers and couples heading to Lucknow city from the airport."
     },
     {
@@ -44,7 +44,7 @@ const vehicles = [
         fuel: "Petrol / CNG",
         priceKm: 11,
         priceDay: 2000,
-        image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/159099/dzire-exterior-right-front-three-quarter.jpeg?isig=0&q=80",
+        image: "images/swift-tour.png",
         description: "India's favourite compact sedan. Fuel-efficient, clean, and well-maintained. Perfect for quick airport-to-city rides and short outstation trips from Lucknow."
     },
     {
@@ -58,7 +58,7 @@ const vehicles = [
         fuel: "Petrol / CNG",
         priceKm: 14,
         priceDay: 2800,
-        image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/112113/ertiga-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
+        image: "images/ertiga.png",
         description: "Best value 7-seater for families. Spacious second and third row seating with good boot space. Great for families arriving at Lucknow airport heading to Kanpur, Ayodhya, or within city."
     },
     {
@@ -72,7 +72,7 @@ const vehicles = [
         fuel: "Diesel",
         priceKm: 16,
         priceDay: 3500,
-        image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
+        image: "images/innova.png",
         description: "The king of highway rides. 7-seater with captain seats, powerful diesel engine, and massive boot. Perfect for families arriving at Lucknow airport heading to Kanpur, Ayodhya, or Varanasi."
     }
 ];
