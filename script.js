@@ -30,7 +30,7 @@ const vehicles = [
         fuel: "Petrol / Diesel",
         priceKm: 12,
         priceDay: 2200,
-        image: "images/swift-tour.jpg",
+        image: "images/etios.jpg",
         description: "Toyota's trusted workhorse. Excellent mileage, spacious interiors, and Toyota reliability. Ideal for solo travellers and couples heading to Lucknow city from the airport."
     },
     {
