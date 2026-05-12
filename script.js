@@ -7,7 +7,35 @@
 const vehicles = [
     {
         id: 1,
-        name: "Swift Dzire",
+        name: "Tata Indigo eCS",
+        category: "sedan",
+        badge: "Sedan",
+        seats: 4,
+        ac: "AC",
+        luggage: 2,
+        fuel: "Diesel",
+        priceKm: 10,
+        priceDay: 1800,
+        image: "https://imgd.aeplcdn.com/664x374/cw/ec/21597/Tata-Indigo-eCS-Right-Front-Three-Quarter-82498.jpg?wm=0&q=80",
+        description: "Affordable and reliable airport taxi. Spacious boot for luggage, smooth diesel engine, and comfortable AC cabin. The go-to choice for budget-friendly airport transfers in Lucknow."
+    },
+    {
+        id: 2,
+        name: "Toyota Etios",
+        category: "sedan",
+        badge: "Sedan",
+        seats: 4,
+        ac: "AC",
+        luggage: 3,
+        fuel: "Petrol / Diesel",
+        priceKm: 12,
+        priceDay: 2200,
+        image: "https://imgd.aeplcdn.com/664x374/cw/ec/20827/Toyota-Etios-Right-Front-Three-Quarter-82498.jpg?wm=0&q=80",
+        description: "Toyota's trusted workhorse. Excellent mileage, spacious interiors, and Toyota reliability. Ideal for solo travellers and couples heading to Lucknow city from the airport."
+    },
+    {
+        id: 3,
+        name: "Maruti Swift Dzire Tour",
         category: "sedan",
         badge: "Sedan",
         seats: 4,
@@ -15,26 +43,26 @@ const vehicles = [
         luggage: 2,
         fuel: "Petrol / CNG",
         priceKm: 11,
-        priceDay: 2200,
+        priceDay: 2000,
         image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/159099/dzire-exterior-right-front-three-quarter.jpeg?isig=0&q=80",
-        description: "Our most popular airport taxi. Compact, clean, and fuel-efficient — perfect for solo travellers and couples heading into Lucknow city. AC with comfortable seating."
+        description: "India's favourite compact sedan. Fuel-efficient, clean, and well-maintained. Perfect for quick airport-to-city rides and short outstation trips from Lucknow."
     },
     {
-        id: 2,
-        name: "Honda City",
-        category: "sedan",
-        badge: "Sedan",
-        seats: 4,
+        id: 4,
+        name: "Maruti Ertiga Tour M",
+        category: "suv",
+        badge: "MPV",
+        seats: 7,
         ac: "AC",
         luggage: 3,
-        fuel: "Petrol",
+        fuel: "Petrol / CNG",
         priceKm: 14,
-        priceDay: 3000,
-        image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=600&q=80",
-        description: "Premium sedan for a smoother ride. Extra legroom, bigger boot, and a quieter cabin. Ideal for business travellers and airport-to-hotel transfers."
+        priceDay: 2800,
+        image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/112113/ertiga-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
+        description: "Best value 7-seater for families. Spacious second and third row seating with good boot space. Great for families arriving at Lucknow airport heading to Kanpur, Ayodhya, or within city."
     },
     {
-        id: 3,
+        id: 5,
         name: "Toyota Innova Crysta",
         category: "suv",
         badge: "SUV",
@@ -46,48 +74,6 @@ const vehicles = [
         priceDay: 3500,
         image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
         description: "The king of highway rides. 7-seater with captain seats, powerful diesel engine, and massive boot. Perfect for families arriving at Lucknow airport heading to Kanpur, Ayodhya, or Varanasi."
-    },
-    {
-        id: 4,
-        name: "Toyota Fortuner",
-        category: "suv",
-        badge: "SUV",
-        seats: 7,
-        ac: "AC",
-        luggage: 4,
-        fuel: "Diesel",
-        priceKm: 22,
-        priceDay: 5500,
-        image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/44709/fortuner-exterior-right-front-three-quarter-19.jpeg?isig=0&q=80",
-        description: "Premium SUV with commanding road presence. 4WD available for rough routes. Perfect for VIP airport pickups and outstation trips to hill stations."
-    },
-    {
-        id: 5,
-        name: "Mercedes E-Class",
-        category: "luxury",
-        badge: "Luxury",
-        seats: 4,
-        ac: "AC",
-        luggage: 3,
-        fuel: "Petrol",
-        priceKm: 35,
-        priceDay: 9500,
-        image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80",
-        description: "Arrive in true luxury. Mercedes E-Class with professional chauffeur, ambient lighting, and premium sound. For weddings, corporate events, and executive airport transfers."
-    },
-    {
-        id: 6,
-        name: "BMW 5 Series",
-        category: "luxury",
-        badge: "Luxury",
-        seats: 4,
-        ac: "AC",
-        luggage: 3,
-        fuel: "Petrol",
-        priceKm: 38,
-        priceDay: 10000,
-        image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80",
-        description: "The ultimate luxury airport transfer. German precision engineering, ultra-smooth ride, rear AC zone. Ideal for diplomats, executives, and special occasions."
     }
 ];
 
@@ -271,8 +257,6 @@ function getVehicleMultiplier(category) {
     switch (category) {
         case "sedan": return 1;
         case "suv": return 1.35;
-        case "luxury": return 2.8;
-
         default: return 1;
     }
 }
