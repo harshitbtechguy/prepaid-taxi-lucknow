@@ -35,7 +35,7 @@ const vehicles = [
     },
     {
         id: 3,
-        name: "Maruti Swift Dzire Tour",
+        name: "Maruti Swift Tour",
         category: "sedan",
         badge: "Sedan",
         seats: 4,
@@ -49,7 +49,7 @@ const vehicles = [
     },
     {
         id: 4,
-        name: "Maruti Ertiga Tour M",
+        name: "Maruti Ertiga",
         category: "suv",
         badge: "MPV",
         seats: 7,
@@ -347,7 +347,6 @@ function renderVehicles(filter = "all") {
             <div class="card-image">
                 <img src="${v.image}" alt="${v.name}" loading="lazy">
                 <span class="card-badge">${v.badge}</span>
-                <span class="card-price-tag">₹${v.priceKm}/km</span>
             </div>
             <div class="card-body">
                 <h3 class="card-name">${v.name}</h3>
@@ -358,10 +357,7 @@ function renderVehicles(filter = "all") {
                     <span class="spec-item"><span class="spec-icon">⛽</span> ${v.fuel}</span>
                 </div>
                 <div class="card-footer">
-                    <div class="card-price">
-                        <span class="amount">₹${v.priceDay.toLocaleString("en-IN")}</span>
-                        <span class="unit">per day</span>
-                    </div>
+                    <a href="tel:+917985578937" class="card-detail-btn">📞 Book Now</a>
                     <button class="card-detail-btn" onclick="openModal(${v.id})">
                         View Details →
                     </button>
@@ -380,8 +376,7 @@ function openModal(vehicleId) {
     document.getElementById("modalImg").alt = v.name;
     document.getElementById("modalBadge").textContent = v.badge;
     document.getElementById("modalName").textContent = v.name;
-    document.getElementById("modalPriceKm").textContent = `₹${v.priceKm}/km`;
-    document.getElementById("modalPriceDay").textContent = `₹${v.priceDay.toLocaleString("en-IN")}/day`;
+    document.getElementById("modalDescription").textContent = v.description;
     document.getElementById("modalDescription").textContent = v.description;
 
     // Specs
