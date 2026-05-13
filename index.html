@@ -80,8 +80,7 @@
                 <div class="booking-field search-field">
                     <label>✈️ PICKUP</label>
                     <div class="search-input-wrap">
-                        <input type="text" id="pickupInput" class="search-input" placeholder="Type pickup location..." autocomplete="off" value="Lucknow Airport (Amausi)">
-                        <div class="search-dropdown" id="pickupDropdown"></div>
+                        <input type="text" id="pickupInput" class="search-input" value="Lucknow Airport (Amausi)" readonly style="cursor:default; opacity:0.85;">
                     </div>
                     <input type="hidden" id="pickupValue" value="lucknow-airport">
                 </div>
@@ -582,22 +581,11 @@
                 <div class="modal-details">
                     <h2 id="modalName"></h2>
                     <div class="modal-specs" id="modalSpecs"></div>
-                    <div class="modal-price-box">
-                        <div class="modal-price-row">
-                            <span class="price-label">Per KM</span>
-                            <span class="price-value" id="modalPriceKm"></span>
-                        </div>
-                        <div class="modal-price-row">
-                            <span class="price-label">Per Day</span>
-                            <span class="price-value" id="modalPriceDay"></span>
-                        </div>
-                    </div>
-                    <div class="modal-route-estimate" id="modalRouteEstimate" style="display:none;">
-                        <h4>🗺️ Route Estimate</h4>
-                        <p id="modalRouteText"></p>
+                    <div class="modal-route-estimate" id="routeEstimate" style="display:none;">
+                        <h4>🗺️ Trip Estimate</h4>
                         <div class="modal-estimate-price">
-                            <span>Estimated Trip Cost</span>
-                            <strong id="modalTripCost"></strong>
+                            <span>Estimated Sedan Fare</span>
+                            <strong id="routeEstimateFare"></strong>
                         </div>
                     </div>
                     <p class="modal-description" id="modalDescription"></p>
