@@ -443,6 +443,18 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
     }
 
     dropdown.innerHTML = html;
+
+    // Position dropdown as fixed, aligned to its input
+    const inputEl = dropdown.previousElementSibling || dropdown.closest('.search-input-wrap')?.querySelector('.search-input');
+    const wrap = dropdown.closest('.search-input-wrap');
+    if (wrap) {
+        const rect = wrap.getBoundingClientRect();
+        dropdown.style.position = 'fixed';
+        dropdown.style.top = (rect.bottom + 2) + 'px';
+        dropdown.style.left = rect.left + 'px';
+        dropdown.style.width = rect.width + 'px';
+    }
+
     dropdown.classList.add('open');
 
     // Attach click handlers
