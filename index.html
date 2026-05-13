@@ -77,53 +77,21 @@
 
             <!-- Booking Search Bar -->
             <div class="booking-bar reveal">
-                <div class="booking-field">
-                    <label for="pickup">✈️ Pickup</label>
-                    <select id="pickup">
-                        <option value="">Select Pickup</option>
-                        <optgroup label="Airport">
-                            <option value="lucknow-airport" selected>Lucknow Airport (Amausi)</option>
-                        </optgroup>
-                        <optgroup label="City">
-                            <option value="lucknow-city">Lucknow City</option>
-                            <option value="hazratganj">Hazratganj</option>
-                            <option value="gomtinagar">Gomti Nagar</option>
-                            <option value="alambagh">Alambagh</option>
-                            <option value="charbagh">Charbagh Railway Station</option>
-                            <option value="aliganj">Aliganj</option>
-                            <option value="indira-nagar">Indira Nagar</option>
-                        </optgroup>
-                    </select>
+                <div class="booking-field search-field">
+                    <label>✈️ PICKUP</label>
+                    <div class="search-input-wrap">
+                        <input type="text" id="pickupInput" class="search-input" placeholder="Type pickup location..." autocomplete="off" value="Lucknow Airport (Amausi)">
+                        <div class="search-dropdown" id="pickupDropdown"></div>
+                    </div>
+                    <input type="hidden" id="pickupValue" value="lucknow-airport">
                 </div>
-                <div class="booking-field">
-                    <label for="drop">📍 Drop</label>
-                    <select id="drop">
-                        <option value="">Select Destination</option>
-                        <optgroup label="Lucknow City">
-                            <option value="hazratganj">Hazratganj</option>
-                            <option value="gomtinagar">Gomti Nagar</option>
-                            <option value="alambagh">Alambagh</option>
-                            <option value="charbagh">Charbagh Railway Station</option>
-                            <option value="aliganj">Aliganj</option>
-                            <option value="indira-nagar">Indira Nagar</option>
-                            <option value="lucknow-city">Lucknow City (Other)</option>
-                        </optgroup>
-                        <optgroup label="Outstation">
-                            <option value="kanpur">Kanpur</option>
-                            <option value="agra">Agra</option>
-                            <option value="varanasi">Varanasi</option>
-                            <option value="allahabad">Prayagraj (Allahabad)</option>
-                            <option value="ayodhya">Ayodhya</option>
-                            <option value="delhi">Delhi / NCR</option>
-                            <option value="bareilly">Bareilly</option>
-                            <option value="sultanpur">Sultanpur</option>
-                            <option value="raebareli">Rae Bareli</option>
-                            <option value="unnao">Unnao</option>
-                            <option value="sitapur">Sitapur</option>
-                            <option value="hardoi">Hardoi</option>
-                            <option value="faizabad">Faizabad</option>
-                        </optgroup>
-                    </select>
+                <div class="booking-field search-field">
+                    <label>📍 DROP</label>
+                    <div class="search-input-wrap">
+                        <input type="text" id="dropInput" class="search-input" placeholder="Type destination..." autocomplete="off">
+                        <div class="search-dropdown" id="dropDropdown"></div>
+                    </div>
+                    <input type="hidden" id="dropValue" value="">
                 </div>
                 <div class="booking-field">
                     <label for="travelDate">📅 Date</label>
@@ -134,6 +102,7 @@
                     <span class="btn-arrow">→</span>
                 </button>
             </div>
+
 
             <div class="hero-trust reveal">
                 <div class="trust-item">

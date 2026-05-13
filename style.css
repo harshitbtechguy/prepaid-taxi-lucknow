@@ -491,6 +491,102 @@ select {
     filter: invert(0.7);
 }
 
+/* Search Input Styles */
+.search-field {
+    position: relative;
+}
+
+.search-input-wrap {
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 14px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-primary) !important;
+    font-size: 0.9rem !important;
+}
+
+.search-input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1) !important;
+}
+
+.search-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    z-index: 1000;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.search-dropdown.open {
+    display: block;
+}
+
+.search-dropdown-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.search-dropdown-item:hover,
+.search-dropdown-item.active {
+    background: rgba(34, 211, 238, 0.08);
+    color: var(--text-primary);
+}
+
+.search-dropdown-item .sdi-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.search-dropdown-item .sdi-info {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.search-dropdown-group {
+    padding: 6px 14px 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(34, 211, 238, 0.03);
+}
+
+.search-dropdown-custom {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--accent-light);
+    cursor: pointer;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+}
+
+.search-dropdown-custom:hover {
+    background: rgba(34, 211, 238, 0.06);
+}
+
 .booking-btn {
     display: flex;
     align-items: center;

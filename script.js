@@ -303,9 +303,33 @@ function toggleViewMore() {
     renderOutstationRoutes();
 }
 
+// ─── Master Location List (for search) ───
+const AIRPORT_FEE = 250; // Hidden airport pickup surcharge
+const PER_KM_RATE = 12;
+
+const allLocations = [
+    // Airport
+    { id: "lucknow-airport", name: "Lucknow Airport (Amausi)", icon: "✈️", group: "Airport", km: 0, fare: 0 },
+    // Local
+    ...localRoutes.map(r => ({ id: r.drop, name: r.name, icon: r.icon, group: "Lucknow City", km: r.km, fare: r.fare })),
+    // Outstation
+    ...outstationRoutes.map(r => {
+        const id = r.name.toLowerCase().replace(/[\s()]+/g, '-').replace(/-+/g, '-');
+        return { id, name: r.name, icon: r.icon, group: r.category === 'purvanchal' ? 'Purvanchal' : r.category === 'religious' ? 'Religious' : r.category === 'tourist' ? 'Tourist' : r.category === 'longdistance' ? 'Long Distance' : 'Popular', km: r.km, fare: r.fare };
+    }),
+];
+
+// Build fare lookup from all locations (km from airport)
+const fareLookup = {};
+allLocations.forEach(loc => {
+    if (loc.id !== 'lucknow-airport') {
+        fareLookup[loc.id] = { km: loc.km, fare: loc.fare, name: loc.name };
+    }
+});
+
 // ─── State ───
 let currentFilter = "all";
-let selectedPickup = "";
+let selectedPickup = "lucknow-airport";
 let selectedDrop = "";
 let currentRouteData = null;
 
@@ -320,9 +344,98 @@ const routeClearBtn = document.getElementById("routeClearBtn");
 const navbar = document.getElementById("navbar");
 const mobileMenuBtn = document.getElementById("mobileMenuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
-const pickupEl = document.getElementById("pickup");
-const dropEl = document.getElementById("drop");
+const pickupInput = document.getElementById("pickupInput");
+const pickupValue = document.getElementById("pickupValue");
+const pickupDropdown = document.getElementById("pickupDropdown");
+const dropInput = document.getElementById("dropInput");
+const dropValue = document.getElementById("dropValue");
+const dropDropdown = document.getElementById("dropDropdown");
 const travelDateEl = document.getElementById("travelDate");
+
+// ─── Search Dropdown Logic ───
+function renderDropdown(dropdown, query, onSelect, excludeId) {
+    const q = query.toLowerCase().trim();
+    let html = '';
+    const groups = {};
+
+    allLocations.forEach(loc => {
+        if (loc.id === excludeId) return;
+        if (q && !loc.name.toLowerCase().includes(q)) return;
+        if (!groups[loc.group]) groups[loc.group] = [];
+        groups[loc.group].push(loc);
+    });
+
+    for (const [groupName, items] of Object.entries(groups)) {
+        html += `<div class="search-dropdown-group">${groupName}</div>`;
+        items.forEach(loc => {
+            const info = loc.km > 0 ? `${loc.km} km` : '';
+            html += `<div class="search-dropdown-item" data-id="${loc.id}" data-name="${loc.name}">
+                <span class="sdi-icon">${loc.icon}</span>
+                <span>${loc.name}</span>
+                ${info ? `<span class="sdi-info">${info}</span>` : ''}
+            </div>`;
+        });
+    }
+
+    // Custom location option
+    if (q && q.length > 1) {
+        const customName = query.trim().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}">📌 Use "${customName}" as custom location</div>`;
+    }
+
+    dropdown.innerHTML = html;
+    dropdown.classList.add('open');
+
+    // Attach click handlers
+    dropdown.querySelectorAll('.search-dropdown-item, .search-dropdown-custom').forEach(item => {
+        item.addEventListener('click', () => {
+            onSelect(item.dataset.id, item.dataset.name);
+            dropdown.classList.remove('open');
+        });
+    });
+}
+
+function initSearchInputs() {
+    // Pickup
+    pickupInput.addEventListener('focus', () => {
+        renderDropdown(pickupDropdown, pickupInput.value, (id, name) => {
+            pickupInput.value = name;
+            pickupValue.value = id;
+            selectedPickup = id;
+        }, dropValue.value);
+    });
+    pickupInput.addEventListener('input', () => {
+        renderDropdown(pickupDropdown, pickupInput.value, (id, name) => {
+            pickupInput.value = name;
+            pickupValue.value = id;
+            selectedPickup = id;
+        }, dropValue.value);
+    });
+
+    // Drop
+    dropInput.addEventListener('focus', () => {
+        renderDropdown(dropDropdown, dropInput.value, (id, name) => {
+            dropInput.value = name;
+            dropValue.value = id;
+            selectedDrop = id;
+        }, pickupValue.value);
+    });
+    dropInput.addEventListener('input', () => {
+        renderDropdown(dropDropdown, dropInput.value, (id, name) => {
+            dropInput.value = name;
+            dropValue.value = id;
+            selectedDrop = id;
+        }, pickupValue.value);
+    });
+
+    // Close dropdowns on click outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-field')) {
+            pickupDropdown.classList.remove('open');
+            dropDropdown.classList.remove('open');
+        }
+    });
+}
 
 // ─── Initialize ───
 document.addEventListener("DOMContentLoaded", () => {
@@ -336,6 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollReveal();
     initParticles();
     initEventListeners();
+    initSearchInputs();
 });
 
 // ─── Render Vehicle Cards ───
@@ -377,7 +491,6 @@ function openModal(vehicleId) {
     document.getElementById("modalBadge").textContent = v.badge;
     document.getElementById("modalName").textContent = v.name;
     document.getElementById("modalDescription").textContent = v.description;
-    document.getElementById("modalDescription").textContent = v.description;
 
     // Specs
     document.getElementById("modalSpecs").innerHTML = `
@@ -388,15 +501,11 @@ function openModal(vehicleId) {
     `;
 
     // Route estimate
-    const routeEstimate = document.getElementById("modalRouteEstimate");
-    if (currentRouteData && selectedPickup && selectedDrop) {
+    const routeEstimate = document.getElementById("routeEstimate");
+    if (currentRouteData) {
         const multiplier = getVehicleMultiplier(v.category);
         const tripCost = Math.round(currentRouteData.fare * multiplier);
-        const pickupName = locationNames[selectedPickup] || selectedPickup;
-        const dropName = locationNames[selectedDrop] || selectedDrop;
-        document.getElementById("modalRouteText").textContent =
-            `${pickupName} → ${dropName} • ${currentRouteData.km} km • ~${currentRouteData.time}`;
-        document.getElementById("modalTripCost").textContent =
+        document.getElementById("routeEstimateFare").textContent =
             `₹${tripCost.toLocaleString("en-IN")}`;
         routeEstimate.style.display = "block";
     } else {
@@ -432,37 +541,75 @@ function setFilter(filter) {
 
 // ─── Search / Route Selection ───
 function handleSearch() {
-    selectedPickup = pickupEl.value;
-    selectedDrop = dropEl.value;
+    selectedPickup = pickupValue.value;
+    selectedDrop = dropValue.value;
+    const pickupName = pickupInput.value.trim();
+    const dropName = dropInput.value.trim();
 
-    if (!selectedPickup || !selectedDrop) {
+    if (!pickupName || !dropName) {
         shakeElement(searchBtn);
         return;
     }
-    if (selectedPickup === selectedDrop) {
+    if (selectedPickup === selectedDrop && selectedPickup) {
         shakeElement(searchBtn);
         return;
     }
 
-    // Look up route
-    const routeKey = `${selectedPickup}-${selectedDrop}`;
-    const reverseKey = `${selectedDrop}-${selectedPickup}`;
-    currentRouteData = routeData[routeKey] || routeData[reverseKey] || null;
+    // Determine fare
+    const isAirportPickup = selectedPickup === 'lucknow-airport';
+    const isAirportDrop = selectedDrop === 'lucknow-airport';
 
-    const pickupName = locationNames[selectedPickup] || selectedPickup;
-    const dropName = locationNames[selectedDrop] || selectedDrop;
+    let routeKm = 0;
+    let routeFare = 0;
+    let routeTime = '';
+    let isKnown = false;
 
-    if (currentRouteData) {
-        routeInfoText.textContent = `✈️ ${pickupName} → ${dropName} • ~${currentRouteData.km} km • ${currentRouteData.time} • Sedan from ₹${currentRouteData.fare.toLocaleString("en-IN")}`;
+    // Check if drop is a known location (from airport)
+    if (isAirportPickup && fareLookup[selectedDrop]) {
+        const loc = fareLookup[selectedDrop];
+        routeKm = loc.km;
+        routeFare = loc.fare + AIRPORT_FEE; // Hidden airport fee
+        routeTime = routeKm < 25 ? `${Math.round(routeKm * 1.5)} min` : `${(routeKm / 55).toFixed(1)} hr`;
+        isKnown = true;
+    }
+    // Check if pickup is known location going to airport
+    else if (isAirportDrop && fareLookup[selectedPickup]) {
+        const loc = fareLookup[selectedPickup];
+        routeKm = loc.km;
+        routeFare = loc.fare; // No airport fee for drop at airport
+        routeTime = routeKm < 25 ? `${Math.round(routeKm * 1.5)} min` : `${(routeKm / 55).toFixed(1)} hr`;
+        isKnown = true;
+    }
+    // Both known local locations
+    else if (fareLookup[selectedPickup] && fareLookup[selectedDrop]) {
+        const pkm = fareLookup[selectedPickup].km;
+        const dkm = fareLookup[selectedDrop].km;
+        routeKm = Math.abs(pkm - dkm) + 5; // approx
+        routeFare = routeKm * PER_KM_RATE;
+        routeTime = `${Math.round(routeKm * 1.5)} min`;
+        isKnown = true;
+    }
+    // Custom / unknown location — estimate at ₹12/km
+    else {
+        // If one is airport and the other is custom
+        if (isAirportPickup || isAirportDrop) {
+            routeKm = 0; // unknown
+            routeFare = 0;
+            routeTime = '';
+        }
+    }
+
+    if (isKnown && routeFare > 0) {
+        // Show fare WITHOUT revealing airport fee (it's baked in)
+        const displayFare = isAirportPickup ? (routeFare - AIRPORT_FEE) : routeFare;
+        currentRouteData = { km: routeKm, fare: routeFare, time: routeTime };
+        routeInfoText.textContent = `✈️ ${pickupName} → ${dropName} • ~${routeKm} km • ${routeTime} • Sedan from ₹${routeFare.toLocaleString("en-IN")}`;
     } else {
-        // Estimate
-        const estKm = 100 + Math.floor(Math.random() * 200);
-        currentRouteData = { km: estKm, fare: estKm * 12, time: "~" + Math.round(estKm / 60) + " hr" };
-        routeInfoText.textContent = `✈️ ${pickupName} → ${dropName} • ~${estKm} km (est.) • Call for exact fare`;
+        currentRouteData = null;
+        routeInfoText.textContent = `✈️ ${pickupName} → ${dropName} • Call 79855 78937 for exact fare`;
     }
-    routeInfoBar.style.display = "block";
 
-    // Scroll to fleet
+    routeInfoBar.style.display = "block";
     document.getElementById("fleet").scrollIntoView({ behavior: "smooth" });
 }
 
