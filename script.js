@@ -211,6 +211,45 @@ function waLink(route) {
     return `https://wa.me/${PHONE}?text=${text}`;
 }
 
+// ─── Booking Popup (Call or WhatsApp) ───
+function showBookingPopup(destination) {
+    // Remove existing popup if any
+    const existing = document.getElementById('bookingPopup');
+    if (existing) existing.remove();
+
+    const waUrl = waLink(destination);
+    const popup = document.createElement('div');
+    popup.id = 'bookingPopup';
+    popup.className = 'booking-popup-overlay';
+    popup.innerHTML = `
+        <div class="booking-popup">
+            <button class="booking-popup-close" onclick="closeBookingPopup()">&times;</button>
+            <div class="booking-popup-icon">🚕</div>
+            <h3>Book Taxi to <span class="accent">${destination}</span></h3>
+            <p>Choose how you'd like to book:</p>
+            <div class="booking-popup-btns">
+                <a href="tel:+917985578937" class="bp-call-btn">📞 Call Now<span>79855 78937</span></a>
+                <a href="${waUrl}" target="_blank" class="bp-wa-btn">💬 WhatsApp<span>Send Message</span></a>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    requestAnimationFrame(() => popup.classList.add('active'));
+
+    // Close on overlay click
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) closeBookingPopup();
+    });
+}
+
+function closeBookingPopup() {
+    const popup = document.getElementById('bookingPopup');
+    if (popup) {
+        popup.classList.remove('active');
+        setTimeout(() => popup.remove(), 200);
+    }
+}
+
 // ─── Render Local Routes ───
 function renderLocalRoutes() {
     const grid = document.getElementById("localRoutesGrid");
@@ -223,7 +262,8 @@ function renderLocalRoutes() {
                 <span class="local-route-dist">~${r.km} km • ${r.time}</span>
             </div>
             <div class="local-route-fare">₹${r.fare}</div>
-            <a href="${waLink(r.name)}" target="_blank" class="local-book-btn">Book Now</a>
+            <button onclick="showBookingPopup('${r.name.replace(/'/g, "\\'")}')"
+                class="local-book-btn">Book Now</button>
         </div>
     `).join("");
 }
@@ -258,7 +298,8 @@ function renderOutstationRoutes() {
                 <span class="fare-amount">₹${r.fare.toLocaleString("en-IN")}</span>
             </div>
             <div class="featured-route-actions">
-                <a href="${waLink(r.name)}" target="_blank" class="featured-book-btn">📱 Book Taxi</a>
+                <button onclick="showBookingPopup('${r.name.replace(/'/g, "\\'")}')"
+                    class="featured-book-btn">📱 Book Taxi</button>
                 ${r.seoPage ? `<a href="${r.seoPage}" class="featured-info-btn">ℹ️ Details</a>` : ''}
             </div>
         </div>
@@ -276,7 +317,8 @@ function renderOutstationRoutes() {
                 <h5>${r.name}</h5>
                 <span class="secondary-route-dist">${r.time} • ₹${r.fare.toLocaleString("en-IN")}</span>
             </div>
-            <a href="${waLink(r.name)}" target="_blank" class="secondary-book-btn">Book</a>
+            <button onclick="showBookingPopup('${r.name.replace(/'/g, "\\'")}')"
+                class="secondary-book-btn">Book</button>
         </div>
     `).join("");
 
