@@ -204,20 +204,30 @@ const locationNames = {
     "gonda": "Gonda", "bahraich": "Bahraich", "chitrakoot": "Chitrakoot",
 };
 
-// ─── WhatsApp Helper ───
-const PHONE = "917985578937";
-function waLink(route) {
-    const text = encodeURIComponent(`Hi, I want to book a taxi from Lucknow Airport to ${route}. Please share details.`);
-    return `https://wa.me/${PHONE}?text=${text}`;
-}
-
 // ─── Booking Popup (Call or WhatsApp) ───
-function showBookingPopup(destination) {
+const PHONE = "917985578937";
+
+function showBookingPopup(item, type = 'route') {
     // Remove existing popup if any
     const existing = document.getElementById('bookingPopup');
     if (existing) existing.remove();
 
-    const waUrl = waLink(destination);
+    let waText = '';
+    let titleText = '';
+
+    if (type === 'route') {
+        waText = encodeURIComponent(`Hi, I want to book a taxi from Lucknow Airport to ${item}. Please share details.`);
+        titleText = `Book Taxi to <span class="accent">${item}</span>`;
+    } else if (type === 'vehicle') {
+        waText = encodeURIComponent(`Hi, I want to book a ${item} in Lucknow. Please share details.`);
+        titleText = `Book <span class="accent">${item}</span>`;
+    } else if (type === 'package') {
+        waText = encodeURIComponent(`Hi, I want to book a ${item} in Lucknow. Please share details.`);
+        titleText = `Book <span class="accent">${item}</span>`;
+    }
+
+    const waUrl = `https://wa.me/${PHONE}?text=${waText}`;
+
     const popup = document.createElement('div');
     popup.id = 'bookingPopup';
     popup.className = 'booking-popup-overlay';
@@ -225,7 +235,7 @@ function showBookingPopup(destination) {
         <div class="booking-popup">
             <button class="booking-popup-close" onclick="closeBookingPopup()">&times;</button>
             <div class="booking-popup-icon">🚕</div>
-            <h3>Book Taxi to <span class="accent">${destination}</span></h3>
+            <h3>${titleText}</h3>
             <p>Choose how you'd like to book:</p>
             <div class="booking-popup-btns">
                 <a href="tel:+917985578937" class="bp-call-btn">📞 Call Now<span>79855 78937</span></a>
@@ -443,18 +453,6 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
     }
 
     dropdown.innerHTML = html;
-
-    // Position dropdown as fixed, aligned to its input
-    const inputEl = dropdown.previousElementSibling || dropdown.closest('.search-input-wrap')?.querySelector('.search-input');
-    const wrap = dropdown.closest('.search-input-wrap');
-    if (wrap) {
-        const rect = wrap.getBoundingClientRect();
-        dropdown.style.position = 'fixed';
-        dropdown.style.top = (rect.bottom + 2) + 'px';
-        dropdown.style.left = rect.left + 'px';
-        dropdown.style.width = rect.width + 'px';
-    }
-
     dropdown.classList.add('open');
 
     // Attach click handlers
@@ -542,7 +540,9 @@ function renderVehicles(filter = "all") {
                     <span class="spec-item"><span class="spec-icon">⛽</span> ${v.fuel}</span>
                 </div>
                 <div class="card-footer">
-                    <a href="tel:+917985578937" class="card-detail-btn">📞 Book Now</a>
+                    <button class="card-detail-btn" onclick="showBookingPopup('${v.name.replace(/'/g, "\\'")}', 'vehicle')">
+                        📞 Book Now
+                    </button>
                     <button class="card-detail-btn" onclick="openModal(${v.id})">
                         View Details →
                     </button>

@@ -515,7 +515,10 @@ select {
 
 .search-dropdown {
     display: none;
-    position: fixed;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: -1px;
+    right: -1px;
     max-height: 300px;
     overflow-y: auto;
     background: #080d1a !important;
