@@ -1,0 +1,17 @@
+# Redirect old URL patterns to new -taxi versions
+/routes/lucknow-airport-to-prayagraj-cab.html        /routes/lucknow-airport-to-prayagraj-taxi.html        301
+/routes/lucknow-airport-to-sitapur-cab.html          /routes/lucknow-airport-to-sitapur-taxi.html          301
+/routes/lucknow-airport-to-rupaidiha-border-taxi.html /routes/lucknow-airport-to-nepal-border-taxi.html     301
+
+# Clean URLs (no .html extension)
+/lucknow-airport-to-ayodhya-taxi                     /routes/lucknow-airport-to-ayodhya-taxi.html          200
+/lucknow-airport-to-kanpur-taxi                      /routes/lucknow-airport-to-kanpur-taxi.html           200
+/lucknow-airport-to-varanasi-taxi                    /routes/lucknow-airport-to-varanasi-taxi.html         200
+/lucknow-airport-to-prayagraj-taxi                   /routes/lucknow-airport-to-prayagraj-taxi.html        200
+/lucknow-airport-to-dudhwa-national-park-taxi        /routes/lucknow-airport-to-dudhwa-national-park-taxi.html 200
+/lucknow-airport-to-nepal-border-taxi                /routes/lucknow-airport-to-nepal-border-taxi.html     200
+/lucknow-airport-to-bahraich-taxi                    /routes/lucknow-airport-to-bahraich-taxi.html         200
+/lucknow-airport-to-gonda-taxi                       /routes/lucknow-airport-to-gonda-taxi.html            200
+/lucknow-airport-to-shravasti-taxi                   /routes/lucknow-airport-to-shravasti-taxi.html        200
+/lucknow-airport-to-sitapur-taxi                     /routes/lucknow-airport-to-sitapur-taxi.html          200
+/pre-paid-taxi-lucknow-airport                       /pre-paid-taxi-lucknow-airport.html                   200
