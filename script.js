@@ -431,12 +431,9 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
         html += `<div class="search-dropdown-group">${groupName}</div>`;
         items.forEach(loc => {
             const kmText = loc.km > 0 ? `${loc.km} km` : '';
-            const fareText = loc.fare > 0 ? `\u20B9${loc.fare.toLocaleString('en-IN')}` : '';
-            html += `<div class="search-dropdown-item" data-id="${loc.id}" data-name="${loc.name}">
-                <span class="sdi-icon">${loc.icon}</span>
+            html += `<div class="search-dropdown-item" data-id="${loc.id}" data-name="${loc.name}" data-fare="${loc.fare || 0}">
                 <span class="sdi-name">${loc.name}</span>
                 ${kmText ? `<span class="sdi-info">${kmText}</span>` : ''}
-                ${fareText ? `<span class="sdi-fare">${fareText}</span>` : ''}
             </div>`;
             totalItems++;
         });
@@ -445,7 +442,7 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
     // Custom location option when searching
     if (q && q.length > 1) {
         const customName = query.trim().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
-        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}">\uD83D\uDCCC Use \"${customName}\" as custom location</div>`;
+        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}" data-fare="0">Use "${customName}" as custom location</div>`;
     }
 
     if (totalItems === 0 && (!q || q.length <= 1)) {
@@ -458,10 +455,24 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
     // Attach click handlers
     dropdown.querySelectorAll('.search-dropdown-item, .search-dropdown-custom').forEach(item => {
         item.addEventListener('click', () => {
-            onSelect(item.dataset.id, item.dataset.name);
+            onSelect(item.dataset.id, item.dataset.name, item.dataset.fare);
             dropdown.classList.remove('open');
         });
     });
+}
+
+// ─── Update Fare Display next to Date ───
+function updateFareDisplay(fare) {
+    const fareDisplay = document.getElementById('fareDisplay');
+    if (!fareDisplay) return;
+    const f = parseInt(fare, 10);
+    if (f > 0) {
+        fareDisplay.innerHTML = `<span class="fare-amount">₹${f.toLocaleString('en-IN')}</span>`;
+        fareDisplay.classList.add('has-fare');
+    } else {
+        fareDisplay.innerHTML = `<span class="fare-empty">Custom route —</span>`;
+        fareDisplay.classList.remove('has-fare');
+    }
 }
 
 function initSearchInputs() {
@@ -483,17 +494,19 @@ function initSearchInputs() {
 
     // Drop
     dropInput.addEventListener('focus', () => {
-        renderDropdown(dropDropdown, dropInput.value, (id, name) => {
+        renderDropdown(dropDropdown, dropInput.value, (id, name, fare) => {
             dropInput.value = name;
             dropValue.value = id;
             selectedDrop = id;
+            updateFareDisplay(fare);
         }, pickupValue.value);
     });
     dropInput.addEventListener('input', () => {
-        renderDropdown(dropDropdown, dropInput.value, (id, name) => {
+        renderDropdown(dropDropdown, dropInput.value, (id, name, fare) => {
             dropInput.value = name;
             dropValue.value = id;
             selectedDrop = id;
+            updateFareDisplay(fare);
         }, pickupValue.value);
     });
 
