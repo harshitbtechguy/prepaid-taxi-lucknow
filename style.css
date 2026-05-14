@@ -1607,6 +1607,107 @@ select {
 }
 
 /* ============================================
+   AUTHORIZED AIRPORT PICKUP TRUST BLOCK
+   ============================================ */
+.authorized-pickup-section {
+    padding: 60px 0 20px;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+.authorized-pickup-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 36px 40px;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.02));
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.authorized-pickup-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+}
+
+.authorized-pickup-icon {
+    font-size: 4rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.4));
+    line-height: 1;
+}
+
+.authorized-pickup-content {
+    flex: 1;
+}
+
+.authorized-pickup-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.authorized-pickup-text {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 640px;
+}
+
+.authorized-pickup-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.ap-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid var(--border-accent);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.ap-badge-icon {
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #04070d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+/* 3-column Why grid modifier */
+.why-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
    CUSTOMER REVIEWS SECTION
    ============================================ */
 .reviews-section {
@@ -2255,6 +2356,19 @@ select {
         min-height: 250px;
         border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     }
+
+    .why-grid--three {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .authorized-pickup-card {
+        padding: 28px 30px;
+    }
+
+    .authorized-pickup-badges {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2313,6 +2427,31 @@ select {
 
     .why-grid {
         grid-template-columns: 1fr;
+    }
+
+    .why-grid--three {
+        grid-template-columns: 1fr;
+    }
+
+    .authorized-pickup-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 28px 24px;
+    }
+
+    .authorized-pickup-badges {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .authorized-pickup-icon {
+        font-size: 3rem;
+    }
+
+    .authorized-pickup-title {
+        font-size: 1.3rem;
     }
 
     .reviews-grid {
