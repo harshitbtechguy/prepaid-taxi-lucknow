@@ -430,12 +430,23 @@ select {
     background-clip: text;
 }
 
-.hero-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
+.hero-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
     max-width: 600px;
+    margin: 0 auto 16px;
+    letter-spacing: -0.3px;
+    line-height: 1.4;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 700px;
     margin: 0 auto 20px;
-    line-height: 1.75;
+    line-height: 1.8;
 }
 
 /* Hero Since Badge */
