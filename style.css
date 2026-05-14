@@ -143,6 +143,21 @@ select {
     letter-spacing: -0.5px;
 }
 
+.logo-since {
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 3px 10px;
+    border: 1px solid rgba(245, 185, 66, 0.3);
+    border-radius: 50px;
+    background: rgba(245, 185, 66, 0.08);
+    white-space: nowrap;
+    align-self: center;
+    line-height: 1.4;
+}
+
 .nav-links {
     display: flex;
     gap: 32px;
@@ -419,8 +434,50 @@ select {
     font-size: 1.1rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin: 0 auto 36px;
+    margin: 0 auto 20px;
     line-height: 1.75;
+}
+
+/* Hero Since Badge */
+.hero-since-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.since-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+    opacity: 0.5;
+}
+
+.since-text {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+}
+
+.since-text::before {
+    content: '✦';
+    margin-right: 8px;
+    font-size: 0.5rem;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+
+.since-text::after {
+    content: '✦';
+    margin-left: 8px;
+    font-size: 0.5rem;
+    vertical-align: middle;
+    opacity: 0.7;
 }
 
 /* --- Booking Bar --- */
@@ -521,7 +578,7 @@ select {
     right: -1px;
     max-height: 300px;
     overflow-y: auto;
-    background: #080d1a !important;
+    background: #0a0f1f !important;
     border: 1px solid rgba(34, 211, 238, 0.3);
     border-radius: 0 0 10px 10px;
     z-index: 99999;
@@ -542,12 +599,12 @@ select {
     align-items: center;
     gap: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    background: #080d1a !important;
+    background: #0a0f1f !important;
 }
 
 .search-dropdown-item:hover,
 .search-dropdown-item.active {
-    background: #111b2e !important;
+    background: #1a2848 !important;
     color: #fff;
 }
 
@@ -556,6 +613,7 @@ select {
     flex-shrink: 0;
     width: 22px;
     text-align: center;
+    display: none;
 }
 
 .search-dropdown-item .sdi-name {
@@ -588,7 +646,7 @@ select {
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    background: #060a14 !important;
+    background: #0a0f1f !important;
     border-bottom: 1px solid rgba(34, 211, 238, 0.08);
     position: sticky;
     top: 0;
@@ -601,11 +659,11 @@ select {
     color: var(--accent-light);
     cursor: pointer;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
-    background: #060a14 !important;
+    background: #0a0f1f !important;
 }
 
 .search-dropdown-custom:hover {
-    background: #111b2e !important;
+    background: #1a2848 !important;
 }
 
 .search-dropdown-empty {
@@ -2278,6 +2336,19 @@ select {
 
     .card-image {
         height: 180px;
+    }
+
+    .logo-since {
+        display: none;
+    }
+
+    .since-line {
+        width: 30px;
+    }
+
+    .since-text {
+        font-size: 0.68rem;
+        letter-spacing: 2px;
     }
 }
 
