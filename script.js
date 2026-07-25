@@ -450,21 +450,17 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
     for (const [groupName, items] of sortedGroups) {
         html += `<div class="search-dropdown-group">${groupName}</div>`;
         items.forEach(loc => {
-            const kmText = loc.km > 0 ? `${loc.km} km` : '';
-            const fareText = loc.fare > 0 ? `from ₹${loc.fare.toLocaleString('en-IN')}` : '';
             html += `<div class="search-dropdown-item" data-id="${loc.id}" data-name="${loc.name}" data-fare="${loc.fare || 0}" data-km="${loc.km || 0}">
                 <span class="sdi-name">${loc.name}</span>
-                ${kmText ? `<span class="sdi-info">${kmText}</span>` : ''}
-                ${fareText ? `<span class="sdi-fare">${fareText}</span>` : ''}
             </div>`;
             totalItems++;
         });
     }
 
-    // Custom location — show ₹10/km rate
+    // Custom location
     if (q && q.length > 1) {
         const customName = query.trim().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
-        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}" data-fare="0" data-km="0">📍 "${customName}" — ₹${CUSTOM_PER_KM}/km (Sedan)</div>`;
+        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}" data-fare="0" data-km="0">📍 "${customName}"</div>`;
     }
 
     if (totalItems === 0 && (!q || q.length <= 1)) {
@@ -485,19 +481,24 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
 // ─── Update Fare Display ───
 function updateFareDisplay(fare, km) {
     const fareDisplay = document.getElementById('fareDisplay');
-    if (!fareDisplay) return;
+    const fareAmount = document.getElementById('fareAmount');
+    const fareKm = document.getElementById('fareKm');
+    if (!fareDisplay || !fareAmount || !fareKm) return;
+
     const f = parseInt(fare, 10);
     const k = parseInt(km, 10) || 0;
+    
     if (f > 0) {
-        fareDisplay.innerHTML = `<span class="fare-label-sm">Starting from</span><span class="fare-amount">₹${f.toLocaleString('en-IN')}</span>`;
-        fareDisplay.classList.add('has-fare');
+        fareAmount.textContent = `₹${f.toLocaleString('en-IN')}`;
+        fareKm.textContent = k > 0 ? `(${k} km)` : '';
+        fareDisplay.style.display = 'flex';
     } else if (k > 0) {
         const estFare = k * CUSTOM_PER_KM;
-        fareDisplay.innerHTML = `<span class="fare-label-sm">Starting from</span><span class="fare-amount">₹${estFare.toLocaleString('en-IN')}</span>`;
-        fareDisplay.classList.add('has-fare');
+        fareAmount.textContent = `₹${estFare.toLocaleString('en-IN')}`;
+        fareKm.textContent = `(${k} km)`;
+        fareDisplay.style.display = 'flex';
     } else {
-        fareDisplay.innerHTML = `<span class="fare-empty">₹${CUSTOM_PER_KM}/km</span>`;
-        fareDisplay.classList.remove('has-fare');
+        fareDisplay.style.display = 'none';
     }
 }
 
@@ -593,6 +594,10 @@ function applyDirection() {
         dropValue.value = "lucknow-airport";
         selectedDrop = "lucknow-airport";
     }
+    
+    // Reset fare display
+    const fareDisplay = document.getElementById('fareDisplay');
+    if (fareDisplay) fareDisplay.style.display = 'none';
 }
 
 // ─── Swap Button ───
