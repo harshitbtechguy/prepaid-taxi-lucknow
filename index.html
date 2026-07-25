@@ -147,46 +147,48 @@
                     </label>
                 </div>
 
-                <!-- Route Fields -->
-                <div class="route-fields">
+                <!-- Unified Booking Form Row -->
+                <div class="booking-form-row">
                     <div class="route-field" id="fieldFrom">
-                        <span class="field-marker field-marker--origin"></span>
                         <div class="field-content">
-                            <label>Airport Name</label>
+                            <label id="lblFrom">From</label>
                             <input type="text" id="pickupInput" class="route-input" value="Chaudhary Charan Singh Airport, Lucknow" readonly>
                         </div>
                         <input type="hidden" id="pickupValue" value="lucknow-airport">
                     </div>
-                    <div class="route-connector">
-                        <div class="connector-line"></div>
-                        <button class="swap-btn" id="swapBtn" type="button" aria-label="Swap locations">⇅</button>
-                    </div>
+                    
+                    <button class="swap-btn" id="swapBtn" type="button" aria-label="Swap locations">⇅</button>
+                    
                     <div class="route-field" id="fieldTo">
-                        <span class="field-marker field-marker--drop">📍</span>
                         <div class="field-content search-field">
-                            <label>Drop Location</label>
+                            <label id="lblTo">To</label>
                             <input type="text" id="dropInput" class="route-input" placeholder="Type destination..." autocomplete="off">
                             <div class="search-dropdown" id="dropDropdown"></div>
                         </div>
                         <input type="hidden" id="dropValue" value="">
                     </div>
-                </div>
 
-                <!-- Action Row -->
-                <div class="booking-actions">
+                    <div class="meta-field">
+                        <label for="travelDate" id="lblDepDate">Departure</label>
+                        <input type="date" id="travelDate">
+                    </div>
+                    <div class="meta-field" id="returnDateField" style="display: none;">
+                        <label for="returnDate">Return</label>
+                        <input type="date" id="returnDate">
+                    </div>
+                    
+                    <div class="meta-field">
+                        <label for="travelTime" id="lblDepTime">Time</label>
+                        <input type="time" id="travelTime">
+                    </div>
+                    <div class="meta-field" id="returnTimeField" style="display: none;">
+                        <label for="returnTime">Drop</label>
+                        <input type="time" id="returnTime">
+                    </div>
+
                     <button class="search-cabs-btn" id="searchBtn" type="button">
                         Check Fare
                     </button>
-                    <div class="booking-meta">
-                        <div class="meta-field">
-                            <label for="travelDate">📅</label>
-                            <input type="date" id="travelDate">
-                        </div>
-                        <div class="meta-field">
-                            <label for="travelTime">🕐</label>
-                            <input type="time" id="travelTime">
-                        </div>
-                    </div>
                 </div>
             </div>
 

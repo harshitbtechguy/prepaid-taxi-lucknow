@@ -502,15 +502,54 @@ function updateFareDisplay(fare, km) {
 }
 
 // ─── Trip Tab Switching ───
+let currentTripType = 'airport';
+
 function initTripTabs() {
     document.querySelectorAll('.trip-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-            // Update active states
+            const tripType = tab.dataset.trip;
+
+            if (tripType === 'hourly') {
+                document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
+                // Reset radio button to previous tab visually
+                document.querySelector(`.trip-tab[data-trip="${currentTripType}"] input`).checked = true;
+                return;
+            }
+
+            currentTripType = tripType;
             document.querySelectorAll('.trip-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             
-            // For all tabs, keep the booking card visible so users can enter their location
-            airportBookingCard.style.display = 'block';
+            const dirToggle = document.querySelector('.direction-toggle');
+            const returnDateField = document.getElementById('returnDateField');
+            const returnTimeField = document.getElementById('returnTimeField');
+
+            if (tripType === 'airport') {
+                if(dirToggle) dirToggle.style.display = 'flex';
+                returnDateField.style.display = 'none';
+                returnTimeField.style.display = 'none';
+                applyDirection(); // Sets labels to Airport Name / Drop Location
+            } else if (tripType === 'outstation-oneway') {
+                if(dirToggle) dirToggle.style.display = 'none';
+                returnDateField.style.display = 'none';
+                returnTimeField.style.display = 'none';
+                document.getElementById('lblFrom').textContent = 'From';
+                document.getElementById('lblTo').textContent = 'To';
+                pickupInput.value = 'Lucknow';
+                pickupInput.readOnly = false;
+                dropInput.value = '';
+                dropInput.readOnly = false;
+            } else if (tripType === 'outstation-roundtrip') {
+                if(dirToggle) dirToggle.style.display = 'none';
+                returnDateField.style.display = 'flex';
+                returnTimeField.style.display = 'flex';
+                document.getElementById('lblFrom').textContent = 'From';
+                document.getElementById('lblTo').textContent = 'To';
+                pickupInput.value = 'Lucknow';
+                pickupInput.readOnly = false;
+                dropInput.value = '';
+                dropInput.readOnly = false;
+            }
         });
     });
 }
@@ -522,41 +561,37 @@ function initDirectionToggle() {
             document.querySelectorAll('.dir-option').forEach(o => o.classList.remove('active'));
             opt.classList.add('active');
             directionMode = opt.querySelector('input').value;
-            applyDirection();
+            if (currentTripType === 'airport') {
+                applyDirection();
+            }
         });
     });
 }
 
 function applyDirection() {
+    if (currentTripType !== 'airport') return;
+    
     const airportName = "Chaudhary Charan Singh Airport, Lucknow";
     if (directionMode === 'from') {
-        // Airport is pickup (top field), user types drop (bottom field)
         pickupInput.value = airportName;
         pickupInput.readOnly = true;
         pickupValue.value = "lucknow-airport";
         selectedPickup = "lucknow-airport";
-        document.querySelector('#fieldFrom .field-content label').textContent = 'Airport Name';
-        document.querySelector('#fieldTo .field-content label').textContent = 'Drop Location';
+        document.getElementById('lblFrom').textContent = 'Airport Name';
+        document.getElementById('lblTo').textContent = 'Drop Location';
         dropInput.placeholder = 'Type destination...';
     } else {
-        // Airport is drop (top field becomes editable, bottom becomes airport)
         pickupInput.value = '';
         pickupInput.readOnly = false;
         pickupInput.placeholder = 'Type pickup location...';
         pickupValue.value = '';
         selectedPickup = '';
-        document.querySelector('#fieldFrom .field-content label').textContent = 'Pickup Location';
-        document.querySelector('#fieldTo .field-content label').textContent = 'Airport Name';
+        document.getElementById('lblFrom').textContent = 'Pickup Location';
+        document.getElementById('lblTo').textContent = 'Airport Name';
         dropInput.value = airportName;
         dropInput.readOnly = true;
         dropValue.value = "lucknow-airport";
         selectedDrop = "lucknow-airport";
-    }
-    // Reset fare display
-    const fareDisplay = document.getElementById('fareDisplay');
-    if (fareDisplay) {
-        fareDisplay.innerHTML = '<span class="fare-empty">Select location —</span>';
-        fareDisplay.classList.remove('has-fare');
     }
 }
 
@@ -564,20 +599,30 @@ function applyDirection() {
 function initSwapButton() {
     if (!swapBtn) return;
     swapBtn.addEventListener('click', () => {
-        // Toggle direction
-        directionMode = directionMode === 'from' ? 'to' : 'from';
-        document.querySelectorAll('.dir-option').forEach(opt => {
-            const val = opt.querySelector('input').value;
-            opt.classList.toggle('active', val === directionMode);
-            opt.querySelector('input').checked = val === directionMode;
-        });
-        applyDirection();
+        if (currentTripType === 'airport') {
+            directionMode = directionMode === 'from' ? 'to' : 'from';
+            document.querySelectorAll('.dir-option').forEach(opt => {
+                const val = opt.querySelector('input').value;
+                opt.classList.toggle('active', val === directionMode);
+                opt.querySelector('input').checked = val === directionMode;
+            });
+            applyDirection();
+        } else {
+            // Just swap values for outstation
+            const tempVal = pickupInput.value;
+            pickupInput.value = dropInput.value;
+            dropInput.value = tempVal;
+            
+            const tempId = pickupValue.value;
+            pickupValue.value = dropValue.value;
+            dropValue.value = tempId;
+        }
     });
 }
 
 // ─── Search Input Events ───
 function initSearchInputs() {
-    // Drop input search (active when directionMode = "from")
+    // Drop input search (active when directionMode = "from" or Outstation)
     dropInput.addEventListener('focus', () => {
         if (dropInput.readOnly) return;
         renderDropdown(dropDropdown, dropInput.value, (id, name, fare, km) => {
