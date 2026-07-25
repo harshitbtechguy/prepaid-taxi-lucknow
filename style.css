@@ -760,42 +760,50 @@ select {
 }
 
 @media (min-width: 992px) {
+    .booking-card {
+        max-width: 1040px;
+        padding: 30px;
+    }
+
     .booking-form-row {
         flex-direction: row;
-        align-items: stretch;
+        align-items: center;
+        flex-wrap: wrap;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--border);
         border-radius: var(--radius-md);
         padding: 8px;
-        gap: 0;
+        gap: 8px;
     }
     
     .route-field, .meta-field {
-        border: none;
-        background: transparent;
-        border-radius: 0;
-        border-right: 1px solid rgba(255,255,255,0.1);
-        padding: 8px 16px;
-        flex: 1;
+        border: 1px solid rgba(255,255,255,0.05);
+        background: rgba(255,255,255,0.02);
+        border-radius: var(--radius-sm);
+        padding: 8px 14px;
+        flex: 1 1 140px;
+        min-width: 140px;
     }
     
     .meta-field {
-        flex: 0 1 auto;
-        min-width: 130px;
+        flex: 1 1 120px;
+        min-width: 120px;
     }
     
     .meta-field input[type="time"] {
-        width: 80px;
+        width: 100%;
     }
 
     .swap-btn {
-        margin: auto -18px;
+        margin: 0;
         background: var(--bg-card);
+        flex-shrink: 0;
     }
     
     .search-cabs-btn {
-        margin-left: 8px;
-        flex-shrink: 0;
+        margin-left: 0;
+        flex: 1 1 140px;
+        min-width: 140px;
     }
 }
 
