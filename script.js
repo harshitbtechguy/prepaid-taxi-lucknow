@@ -130,62 +130,78 @@ const outstationRoutes = [
     // Featured (popular + starred for SEO pages)
     { name: "Kanpur", icon: "🏭", km: 85, time: "1.5 hr", fare: 2000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-kanpur-taxi.html" },
     { name: "Ayodhya", icon: "🛕", km: 135, time: "2.5 hr", fare: 3250, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-ayodhya-taxi.html" },
-    { name: "Prayagraj", icon: "🙏", km: 210, time: "3.5 hr", fare: 4500, category: "religious", featured: true, seoPage: "routes/lucknow-airport-to-prayagraj-taxi.html" },
+    { name: "Prayagraj", icon: "🙏", km: 210, time: "3.5 hr", fare: 4200, category: "religious", featured: true, seoPage: "routes/lucknow-airport-to-prayagraj-taxi.html" },
     { name: "Varanasi", icon: "🕉️", km: 320, time: "5.5 hr", fare: 5500, category: "religious", featured: true, seoPage: "routes/lucknow-airport-to-varanasi-taxi.html" },
     { name: "Gorakhpur", icon: "⛩️", km: 270, time: "5 hr", fare: 5000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-gorakhpur-taxi.html" },
-    { name: "Agra", icon: "🏛️", km: 335, time: "5 hr", fare: 6000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-agra-taxi.html" },
-    { name: "Hardoi", icon: "🏛️", km: 130, time: "2.5 hr", fare: 2500, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-hardoi-cab.html" },
-    { name: "Sitapur", icon: "🏘️", km: 90, time: "1.5 hr", fare: 2000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-sitapur-taxi.html" },
-    { name: "Lakhimpur Kheri", icon: "🌿", km: 135, time: "3 hr", fare: 3000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-lakhimpur-taxi.html" },
-    { name: "Barabanki", icon: "🕌", km: 30, time: "45 min", fare: 1000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-barabanki-taxi.html" },
+    { name: "Agra", icon: "🏛️", km: 335, time: "5 hr", fare: 6500, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-agra-taxi.html" },
+    { name: "Hardoi", icon: "🏛️", km: 130, time: "2.5 hr", fare: 2400, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-hardoi-cab.html" },
+    { name: "Sitapur", icon: "🏘️", km: 90, time: "1.5 hr", fare: 2200, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-sitapur-taxi.html" },
+    { name: "Lakhimpur Kheri", icon: "🌿", km: 135, time: "3 hr", fare: 3300, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-lakhimpur-taxi.html" },
+    { name: "Barabanki", icon: "🕌", km: 30, time: "45 min", fare: 1200, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-barabanki-taxi.html" },
     { name: "Sultanpur", icon: "🏰", km: 140, time: "2.5 hr", fare: 3200, category: "popular", featured: true },
-    { name: "Gonda", icon: "🌾", km: 120, time: "2.5 hr", fare: 2500, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-gonda-taxi.html" },
-    { name: "Bahraich", icon: "🦁", km: 185, time: "3.5 hr", fare: 3600, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-bahraich-taxi.html" },
+    { name: "Gonda", icon: "🌾", km: 120, time: "2.5 hr", fare: 3000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-gonda-taxi.html" },
+    { name: "Bahraich", icon: "🦁", km: 185, time: "3.5 hr", fare: 3000, category: "popular", featured: true, seoPage: "routes/lucknow-airport-to-bahraich-taxi.html" },
     { name: "Rae Bareli", icon: "🏭", km: 85, time: "1.5 hr", fare: 2000, category: "nearby", featured: true },
     { name: "Chitrakoot", icon: "⛰️", km: 280, time: "5 hr", fare: 4500, category: "religious", featured: true },
-    { name: "Guriphanta", icon: "🌲", km: 230, time: "4.5 hr", fare: 4500, category: "nearby", featured: true, seoPage: "routes/lucknow-airport-to-guriphanta-taxi.html" },
-    { name: "Nepal Border (Rupaidiha)", icon: "🛂", km: 180, time: "3.5 hr", fare: 3500, category: "nearby", featured: true, seoPage: "routes/lucknow-airport-to-nepal-border-taxi.html" },
+    { name: "Guriphanta", icon: "🌲", km: 230, time: "4.5 hr", fare: 5500, category: "nearby", featured: true, seoPage: "routes/lucknow-airport-to-guriphanta-taxi.html" },
+    { name: "Nepal Border (Rupaidiha)", icon: "🛂", km: 180, time: "3.5 hr", fare: 4200, category: "nearby", featured: true, seoPage: "routes/lucknow-airport-to-nepal-border-taxi.html" },
     { name: "Dudhwa National Park", icon: "🐅", km: 220, time: "4.5 hr", fare: 4500, category: "tourist", featured: true, seoPage: "routes/lucknow-airport-to-dudhwa-national-park-taxi.html" },
     // Purvanchal
-    { name: "Azamgarh", icon: "🏘️", km: 280, time: "5 hr", fare: 5500, category: "purvanchal" },
+    { name: "Azamgarh", icon: "🏘️", km: 280, time: "5 hr", fare: 6500, category: "purvanchal" },
     { name: "Mau", icon: "🏘️", km: 340, time: "6 hr", fare: 6500, category: "purvanchal" },
-    { name: "Ballia", icon: "🏘️", km: 380, time: "7 hr", fare: 7000, category: "purvanchal" },
-    { name: "Deoria", icon: "🏘️", km: 310, time: "5.5 hr", fare: 6000, category: "purvanchal" },
-    { name: "Jaunpur", icon: "🕌", km: 230, time: "4 hr", fare: 4000, category: "purvanchal" },
-    { name: "Ghazipur", icon: "🏘️", km: 360, time: "6.5 hr", fare: 7000, category: "purvanchal" },
-    { name: "Ambedkar Nagar", icon: "🏘️", km: 170, time: "3 hr", fare: 4000, category: "purvanchal" },
-    { name: "Sant Kabir Nagar", icon: "🏘️", km: 250, time: "4.5 hr", fare: 5000, category: "purvanchal" },
-    { name: "Siddharthnagar", icon: "🏘️", km: 280, time: "5 hr", fare: 6000, category: "purvanchal" },
-    { name: "Kushinagar", icon: "☸️", km: 310, time: "5.5 hr", fare: 6500, category: "purvanchal" },
-    { name: "Maharajganj", icon: "🏘️", km: 330, time: "6 hr", fare: 7000, category: "purvanchal" },
-    { name: "Pratapgarh", icon: "🏘️", km: 170, time: "3 hr", fare: 3000, category: "purvanchal" },
-    { name: "Mirzapur", icon: "🏘️", km: 330, time: "5.5 hr", fare: 6500, category: "purvanchal" },
+    { name: "Ballia", icon: "🏘️", km: 380, time: "7 hr", fare: 8500, category: "purvanchal" },
+    { name: "Deoria", icon: "🏘️", km: 310, time: "5.5 hr", fare: 7000, category: "purvanchal" },
+    { name: "Jaunpur", icon: "🕌", km: 230, time: "4 hr", fare: 4800, category: "purvanchal" },
+    { name: "Ghazipur", icon: "🏘️", km: 360, time: "6.5 hr", fare: 6200, category: "purvanchal" },
+    { name: "Ambedkar Nagar", icon: "🏘️", km: 170, time: "3 hr", fare: 4500, category: "purvanchal" },
+    { name: "Sant Kabir Nagar", icon: "🏘️", km: 250, time: "4.5 hr", fare: 5050, category: "purvanchal" },
+    { name: "Siddharthnagar", icon: "🏘️", km: 280, time: "5 hr", fare: 6200, category: "purvanchal" },
+    { name: "Kushinagar", icon: "☸️", km: 310, time: "5.5 hr", fare: 7200, category: "purvanchal" },
+    { name: "Maharajganj", icon: "🏘️", km: 330, time: "6 hr", fare: 8500, category: "purvanchal" },
+    { name: "Pratapgarh", icon: "🏘️", km: 170, time: "3 hr", fare: 4200, category: "purvanchal" },
+    { name: "Mirzapur", icon: "🏘️", km: 330, time: "5.5 hr", fare: 5500, category: "purvanchal" },
     // Nearby Districts
-    { name: "Unnao", icon: "🏘️", km: 55, time: "1 hr", fare: 1500, category: "nearby" },
-    { name: "Shahjahanpur", icon: "🏘️", km: 185, time: "3.5 hr", fare: 3500, category: "nearby" },
-    { name: "Fatehpur", icon: "🏘️", km: 170, time: "3 hr", fare: 3000, category: "nearby" },
-    { name: "Balrampur", icon: "🏰", km: 200, time: "4 hr", fare: 3500, category: "nearby" },
-    { name: "Shravasti", icon: "☸️", km: 175, time: "3.5 hr", fare: 3250, category: "nearby", featured: true, seoPage: "routes/lucknow-airport-to-shravasti-taxi.html" },
+    { name: "Unnao", icon: "🏘️", km: 55, time: "1 hr", fare: 1800, category: "nearby" },
+    { name: "Shahjahanpur", icon: "🏘️", km: 185, time: "3.5 hr", fare: 4500, category: "nearby" },
+    { name: "Fatehpur", icon: "🏘️", km: 170, time: "3 hr", fare: 3500, category: "nearby" },
+    { name: "Balrampur", icon: "🏰", km: 200, time: "4 hr", fare: 4500, category: "nearby" },
+    { name: "Shravasti", icon: "☸️", km: 175, time: "3.5 hr", fare: 4000, category: "nearby", featured: true, seoPage: "routes/lucknow-airport-to-shravasti-taxi.html" },
     { name: "Pilibhit", icon: "🌲", km: 260, time: "4.5 hr", fare: 5000, category: "nearby" },
-    { name: "Farrukhabad", icon: "🏘️", km: 200, time: "3.5 hr", fare: 4000, category: "nearby" },
-    { name: "Kannauj", icon: "🌹", km: 140, time: "2.5 hr", fare: 2500, category: "nearby" },
-    { name: "Etawah", icon: "🏘️", km: 220, time: "4 hr", fare: 4000, category: "nearby" },
-    { name: "Bareilly", icon: "🏘️", km: 250, time: "4.5 hr", fare: 4500, category: "nearby" },
-    { name: "Bans Bareilly", icon: "🏘️", km: 260, time: "5 hr", fare: 4500, category: "nearby" },
+    { name: "Farrukhabad", icon: "🏘️", km: 200, time: "3.5 hr", fare: 4500, category: "nearby" },
+    { name: "Kannauj", icon: "🌹", km: 140, time: "2.5 hr", fare: 3200, category: "nearby" },
+    { name: "Etawah", icon: "🏘️", km: 220, time: "4 hr", fare: 5000, category: "nearby" },
+    { name: "Bareilly", icon: "🏘️", km: 250, time: "4.5 hr", fare: 5000, category: "nearby" },
+    { name: "Bans Bareilly", icon: "🏘️", km: 260, time: "5 hr", fare: 5500, category: "nearby" },
     { name: "Meerut", icon: "🏘️", km: 470, time: "7 hr", fare: 8500, category: "nearby" },
-    { name: "Azaamgarh", icon: "🏘️", km: 260, time: "4.5 hr", fare: 5000, category: "nearby" },
+    { name: "Amethi", icon: "🏘️", km: 130, time: "3 hr", fare: 3000, category: "nearby" },
+    { name: "Tanakpur", icon: "🌲", km: 320, time: "6 hr", fare: 6500, category: "nearby" },
+    { name: "Tulsipur", icon: "🏘️", km: 220, time: "4.5 hr", fare: 4000, category: "nearby" },
+    { name: "Unchahar", icon: "🏘️", km: 110, time: "2.5 hr", fare: 2400, category: "nearby" },
+    { name: "Safipur", icon: "🏘️", km: 70, time: "1.5 hr", fare: 2000, category: "nearby" },
+    { name: "Bangarmau", icon: "🏘️", km: 80, time: "2 hr", fare: 2000, category: "nearby" },
+    { name: "Madhavganj", icon: "🏘️", km: 90, time: "2 hr", fare: 2000, category: "nearby" },
+    { name: "Bilgram", icon: "🏘️", km: 110, time: "2.5 hr", fare: 2400, category: "nearby" },
+    { name: "Makanpur", icon: "🏘️", km: 100, time: "2.5 hr", fare: 3200, category: "nearby" },
+    { name: "Maurawan", icon: "🏘️", km: 60, time: "1.5 hr", fare: 2000, category: "nearby" },
+    { name: "Hamirpur", icon: "🏘️", km: 150, time: "3 hr", fare: 3500, category: "nearby" },
+    { name: "Banda", icon: "🏘️", km: 200, time: "4 hr", fare: 4000, category: "nearby" },
+    { name: "Bindki", icon: "🏘️", km: 120, time: "2.5 hr", fare: 3000, category: "nearby" },
+    { name: "Rudauli", icon: "🏘️", km: 100, time: "2 hr", fare: 2200, category: "nearby" },
+    { name: "Kursi", icon: "🏘️", km: 35, time: "1 hr", fare: 2000, category: "nearby" },
+    { name: "Barhni Border", icon: "🛂", km: 240, time: "5 hr", fare: 4500, category: "nearby" },
+    { name: "Fatehgarh", icon: "🏘️", km: 190, time: "4 hr", fare: 4500, category: "nearby" },
     // Religious
-    { name: "Mathura", icon: "🛕", km: 400, time: "6 hr", fare: 7000, category: "religious" },
-    { name: "Vrindavan", icon: "🦚", km: 410, time: "6 hr", fare: 7000, category: "religious" },
+    { name: "Mathura", icon: "🛕", km: 400, time: "6 hr", fare: 8500, category: "religious" },
+    { name: "Vrindavan", icon: "🦚", km: 410, time: "6 hr", fare: 8500, category: "religious" },
     { name: "Vindhyachal", icon: "🙏", km: 290, time: "5 hr", fare: 5500, category: "religious" },
     { name: "Naimisharanya", icon: "📿", km: 95, time: "2 hr", fare: 2250, category: "religious" },
     // Tourist
-    { name: "Nainital", icon: "🏔️", km: 440, time: "7 hr", fare: 7500, category: "tourist" },
+    { name: "Nainital", icon: "🏔️", km: 440, time: "7 hr", fare: 8600, category: "tourist" },
     { name: "Mussoorie", icon: "⛰️", km: 540, time: "8.5 hr", fare: 10000, category: "tourist" },
     // Long Distance
     { name: "Delhi", icon: "🏙️", km: 530, time: "7 hr", fare: 11500, category: "longdistance" },
     { name: "Noida", icon: "🏢", km: 520, time: "7 hr", fare: 11000, category: "longdistance" },
-    { name: "Bihar", icon: "🏘️", km: 500, time: "8 hr", fare: 8000, category: "longdistance" },
+    { name: "Bihar", icon: "🏘️", km: 500, time: "8 hr", fare: 11000, category: "longdistance" },
 ];
 
 // ─── Location Name Map ───
@@ -214,15 +230,17 @@ function showBookingPopup(item, type = 'route') {
 
     let waText = '';
     let titleText = '';
+    const dateTimeStr = typeof getTravelDateTime === 'function' ? getTravelDateTime() : '';
+    const dtPart = dateTimeStr ? ` on ${dateTimeStr}` : '';
 
     if (type === 'route') {
-        waText = encodeURIComponent(`Hi, I want to book a taxi from Lucknow Airport to ${item}. Please share details.`);
+        waText = encodeURIComponent(`Hi, I want to book a taxi from Lucknow Airport to ${item}${dtPart}. Please share details.`);
         titleText = `Book Taxi to <span class="accent">${item}</span>`;
     } else if (type === 'vehicle') {
-        waText = encodeURIComponent(`Hi, I want to book a ${item} in Lucknow. Please share details.`);
+        waText = encodeURIComponent(`Hi, I want to book a ${item}${dtPart} in Lucknow. Please share details.`);
         titleText = `Book <span class="accent">${item}</span>`;
     } else if (type === 'package') {
-        waText = encodeURIComponent(`Hi, I want to book a ${item} in Lucknow. Please share details.`);
+        waText = encodeURIComponent(`Hi, I want to book a ${item}${dtPart} from Lucknow. Please share details.`);
         titleText = `Book <span class="accent">${item}</span>`;
     }
 
@@ -384,6 +402,8 @@ let currentFilter = "all";
 let selectedPickup = "lucknow-airport";
 let selectedDrop = "";
 let currentRouteData = null;
+let directionMode = "from"; // "from" = From Airport, "to" = To Airport
+const CUSTOM_PER_KM = 10; // ₹10/km for unlisted locations
 
 // ─── DOM Elements ───
 const vehicleGrid = document.getElementById("vehicleGrid");
@@ -398,19 +418,20 @@ const mobileMenuBtn = document.getElementById("mobileMenuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const pickupInput = document.getElementById("pickupInput");
 const pickupValue = document.getElementById("pickupValue");
-const pickupDropdown = document.getElementById("pickupDropdown");
 const dropInput = document.getElementById("dropInput");
 const dropValue = document.getElementById("dropValue");
 const dropDropdown = document.getElementById("dropDropdown");
 const travelDateEl = document.getElementById("travelDate");
+const travelTimeEl = document.getElementById("travelTime");
+const swapBtn = document.getElementById("swapBtn");
+const airportBookingCard = document.getElementById("airportBookingCard");
 
 // ─── Search Dropdown Logic ───
 function renderDropdown(dropdown, query, onSelect, excludeId) {
     const q = query.toLowerCase().trim();
     let html = '';
     const groups = {};
-    // Priority order for groups
-    const groupOrder = ['Airport', 'Lucknow City', 'Popular', 'Religious', 'Purvanchal', 'Tourist', 'Long Distance'];
+    const groupOrder = ['Airport', 'Lucknow City', 'Popular', 'Religious', 'Purvanchal', 'Tourist', 'Long Distance', 'Nearby'];
 
     allLocations.forEach(loc => {
         if (loc.id === excludeId) return;
@@ -419,7 +440,6 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
         groups[loc.group].push(loc);
     });
 
-    // Sort groups by priority
     const sortedGroups = Object.entries(groups).sort((a, b) => {
         const ai = groupOrder.indexOf(a[0]);
         const bi = groupOrder.indexOf(b[0]);
@@ -431,18 +451,20 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
         html += `<div class="search-dropdown-group">${groupName}</div>`;
         items.forEach(loc => {
             const kmText = loc.km > 0 ? `${loc.km} km` : '';
-            html += `<div class="search-dropdown-item" data-id="${loc.id}" data-name="${loc.name}" data-fare="${loc.fare || 0}">
+            const fareText = loc.fare > 0 ? `from ₹${loc.fare.toLocaleString('en-IN')}` : '';
+            html += `<div class="search-dropdown-item" data-id="${loc.id}" data-name="${loc.name}" data-fare="${loc.fare || 0}" data-km="${loc.km || 0}">
                 <span class="sdi-name">${loc.name}</span>
                 ${kmText ? `<span class="sdi-info">${kmText}</span>` : ''}
+                ${fareText ? `<span class="sdi-fare">${fareText}</span>` : ''}
             </div>`;
             totalItems++;
         });
     }
 
-    // Custom location option when searching
+    // Custom location — show ₹10/km rate
     if (q && q.length > 1) {
         const customName = query.trim().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
-        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}" data-fare="0">Use "${customName}" as custom location</div>`;
+        html += `<div class="search-dropdown-custom" data-id="custom-${customName}" data-name="${customName}" data-fare="0" data-km="0">📍 "${customName}" — ₹${CUSTOM_PER_KM}/km (Sedan)</div>`;
     }
 
     if (totalItems === 0 && (!q || q.length <= 1)) {
@@ -452,71 +474,195 @@ function renderDropdown(dropdown, query, onSelect, excludeId) {
     dropdown.innerHTML = html;
     dropdown.classList.add('open');
 
-    // Attach click handlers
     dropdown.querySelectorAll('.search-dropdown-item, .search-dropdown-custom').forEach(item => {
         item.addEventListener('click', () => {
-            onSelect(item.dataset.id, item.dataset.name, item.dataset.fare);
+            onSelect(item.dataset.id, item.dataset.name, item.dataset.fare, item.dataset.km);
             dropdown.classList.remove('open');
         });
     });
 }
 
-// ─── Update Fare Display next to Date ───
-function updateFareDisplay(fare) {
+// ─── Update Fare Display ───
+function updateFareDisplay(fare, km) {
     const fareDisplay = document.getElementById('fareDisplay');
     if (!fareDisplay) return;
     const f = parseInt(fare, 10);
+    const k = parseInt(km, 10) || 0;
     if (f > 0) {
-        fareDisplay.innerHTML = `<span class="fare-amount">₹${f.toLocaleString('en-IN')}</span>`;
+        fareDisplay.innerHTML = `<span class="fare-label-sm">Starting from</span><span class="fare-amount">₹${f.toLocaleString('en-IN')}</span>`;
+        fareDisplay.classList.add('has-fare');
+    } else if (k > 0) {
+        const estFare = k * CUSTOM_PER_KM;
+        fareDisplay.innerHTML = `<span class="fare-label-sm">Starting from</span><span class="fare-amount">₹${estFare.toLocaleString('en-IN')}</span>`;
         fareDisplay.classList.add('has-fare');
     } else {
-        fareDisplay.innerHTML = `<span class="fare-empty">Custom route —</span>`;
+        fareDisplay.innerHTML = `<span class="fare-empty">₹${CUSTOM_PER_KM}/km</span>`;
         fareDisplay.classList.remove('has-fare');
     }
 }
 
-function initSearchInputs() {
-    // Pickup
-    pickupInput.addEventListener('focus', () => {
-        renderDropdown(pickupDropdown, pickupInput.value, (id, name) => {
-            pickupInput.value = name;
-            pickupValue.value = id;
-            selectedPickup = id;
-        }, dropValue.value);
-    });
-    pickupInput.addEventListener('input', () => {
-        renderDropdown(pickupDropdown, pickupInput.value, (id, name) => {
-            pickupInput.value = name;
-            pickupValue.value = id;
-            selectedPickup = id;
-        }, dropValue.value);
-    });
+// ─── Trip Tab Switching ───
+function initTripTabs() {
+    document.querySelectorAll('.trip-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tripType = tab.dataset.trip;
+            // Update active states
+            document.querySelectorAll('.trip-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
 
-    // Drop
+            if (tripType === 'airport') {
+                airportBookingCard.style.display = 'block';
+            } else {
+                airportBookingCard.style.display = 'none';
+                // Show booking popup for other trip types
+                const tripLabels = {
+                    'outstation-oneway': 'Outstation One-Way Trip',
+                    'outstation-roundtrip': 'Outstation Round-Trip',
+                    'hourly': 'Hourly Rental Package'
+                };
+                showBookingPopup(tripLabels[tripType] || tripType, 'package');
+                // Reset to airport tab after popup
+                setTimeout(() => {
+                    document.querySelector('.trip-tab[data-trip="airport"]').classList.add('active');
+                    tab.classList.remove('active');
+                    airportBookingCard.style.display = 'block';
+                }, 300);
+            }
+        });
+    });
+}
+
+// ─── Direction Toggle (From/To Airport) ───
+function initDirectionToggle() {
+    document.querySelectorAll('.dir-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            document.querySelectorAll('.dir-option').forEach(o => o.classList.remove('active'));
+            opt.classList.add('active');
+            directionMode = opt.querySelector('input').value;
+            applyDirection();
+        });
+    });
+}
+
+function applyDirection() {
+    const airportName = "Chaudhary Charan Singh Airport, Lucknow";
+    if (directionMode === 'from') {
+        // Airport is pickup (top field), user types drop (bottom field)
+        pickupInput.value = airportName;
+        pickupInput.readOnly = true;
+        pickupValue.value = "lucknow-airport";
+        selectedPickup = "lucknow-airport";
+        document.querySelector('#fieldFrom .field-content label').textContent = 'Airport Name';
+        document.querySelector('#fieldTo .field-content label').textContent = 'Drop Location';
+        dropInput.placeholder = 'Type destination...';
+    } else {
+        // Airport is drop (top field becomes editable, bottom becomes airport)
+        pickupInput.value = '';
+        pickupInput.readOnly = false;
+        pickupInput.placeholder = 'Type pickup location...';
+        pickupValue.value = '';
+        selectedPickup = '';
+        document.querySelector('#fieldFrom .field-content label').textContent = 'Pickup Location';
+        document.querySelector('#fieldTo .field-content label').textContent = 'Airport Name';
+        dropInput.value = airportName;
+        dropInput.readOnly = true;
+        dropValue.value = "lucknow-airport";
+        selectedDrop = "lucknow-airport";
+    }
+    // Reset fare display
+    const fareDisplay = document.getElementById('fareDisplay');
+    if (fareDisplay) {
+        fareDisplay.innerHTML = '<span class="fare-empty">Select location —</span>';
+        fareDisplay.classList.remove('has-fare');
+    }
+}
+
+// ─── Swap Button ───
+function initSwapButton() {
+    if (!swapBtn) return;
+    swapBtn.addEventListener('click', () => {
+        // Toggle direction
+        directionMode = directionMode === 'from' ? 'to' : 'from';
+        document.querySelectorAll('.dir-option').forEach(opt => {
+            const val = opt.querySelector('input').value;
+            opt.classList.toggle('active', val === directionMode);
+            opt.querySelector('input').checked = val === directionMode;
+        });
+        applyDirection();
+    });
+}
+
+// ─── Search Input Events ───
+function initSearchInputs() {
+    // Drop input search (active when directionMode = "from")
     dropInput.addEventListener('focus', () => {
-        renderDropdown(dropDropdown, dropInput.value, (id, name, fare) => {
+        if (dropInput.readOnly) return;
+        renderDropdown(dropDropdown, dropInput.value, (id, name, fare, km) => {
             dropInput.value = name;
             dropValue.value = id;
             selectedDrop = id;
-            updateFareDisplay(fare);
+            updateFareDisplay(fare, km);
         }, pickupValue.value);
     });
     dropInput.addEventListener('input', () => {
-        renderDropdown(dropDropdown, dropInput.value, (id, name, fare) => {
+        if (dropInput.readOnly) return;
+        renderDropdown(dropDropdown, dropInput.value, (id, name, fare, km) => {
             dropInput.value = name;
             dropValue.value = id;
             selectedDrop = id;
-            updateFareDisplay(fare);
+            updateFareDisplay(fare, km);
         }, pickupValue.value);
+    });
+
+    // Pickup input search (active when directionMode = "to")
+    pickupInput.addEventListener('focus', () => {
+        if (pickupInput.readOnly) return;
+        renderDropdown(dropDropdown, pickupInput.value, (id, name, fare, km) => {
+            pickupInput.value = name;
+            pickupValue.value = id;
+            selectedPickup = id;
+            updateFareDisplay(fare, km);
+        }, 'lucknow-airport');
+    });
+    pickupInput.addEventListener('input', () => {
+        if (pickupInput.readOnly) return;
+        renderDropdown(dropDropdown, pickupInput.value, (id, name, fare, km) => {
+            pickupInput.value = name;
+            pickupValue.value = id;
+            selectedPickup = id;
+            updateFareDisplay(fare, km);
+        }, 'lucknow-airport');
     });
 
     // Close dropdowns on click outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-field')) {
-            pickupDropdown.classList.remove('open');
+        if (!e.target.closest('.search-field') && !e.target.closest('#fieldFrom')) {
             dropDropdown.classList.remove('open');
         }
     });
+}
+
+// ─── Get Travel DateTime String ───
+function getTravelDateTime() {
+    const date = travelDateEl ? travelDateEl.value : '';
+    const time = travelTimeEl ? travelTimeEl.value : '';
+    let dateStr = '';
+    if (date) {
+        const d = new Date(date);
+        dateStr = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+    let timeStr = '';
+    if (time) {
+        const [h, m] = time.split(':');
+        const hr = parseInt(h, 10);
+        const ampm = hr >= 12 ? 'PM' : 'AM';
+        const hr12 = hr % 12 || 12;
+        timeStr = `${hr12}:${m} ${ampm}`;
+    }
+    if (dateStr && timeStr) return `${dateStr} at ${timeStr}`;
+    if (dateStr) return dateStr;
+    if (timeStr) return `Today at ${timeStr}`;
+    return '';
 }
 
 // ─── Initialize ───
@@ -525,6 +671,12 @@ document.addEventListener("DOMContentLoaded", () => {
     travelDateEl.setAttribute("min", today);
     travelDateEl.value = today;
 
+    // Set default time to current hour rounded up
+    const now = new Date();
+    const nextHour = new Date(now.getTime() + 60 * 60 * 1000);
+    const hh = String(nextHour.getHours()).padStart(2, '0');
+    travelTimeEl.value = `${hh}:00`;
+
     renderVehicles();
     renderLocalRoutes();
     renderOutstationRoutes();
@@ -532,6 +684,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initParticles();
     initEventListeners();
     initSearchInputs();
+    initTripTabs();
+    initDirectionToggle();
+    initSwapButton();
 });
 
 // ─── Render Vehicle Cards ───
@@ -649,7 +804,7 @@ function handleSearch() {
     if (fareLookup[selectedDrop]) {
         const loc = fareLookup[selectedDrop];
         routeKm = loc.km;
-        routeFare = loc.fare; // Use exact pre-fed fare, no extra fees
+        routeFare = loc.fare;
         routeTime = routeKm < 25 ? `${Math.round(routeKm * 1.5)} min` : `${(routeKm / 55).toFixed(1)} hr`;
         isKnown = true;
     }
@@ -661,18 +816,20 @@ function handleSearch() {
         routeTime = routeKm < 25 ? `${Math.round(routeKm * 1.5)} min` : `${(routeKm / 55).toFixed(1)} hr`;
         isKnown = true;
     }
-    // Custom drop + airport pickup — add hidden ₹250
-    else if (selectedPickup === 'lucknow-airport' && selectedDrop.startsWith('custom-')) {
-        // Unknown location — prompt to call
+    // Custom drop or pickup — use ₹10/km
+    else if (selectedPickup === 'lucknow-airport' && selectedDrop && selectedDrop.startsWith('custom-')) {
         isKnown = false;
     }
 
+    const dateTimeStr = getTravelDateTime();
+    const dtPart = dateTimeStr ? ` • ${dateTimeStr}` : '';
+
     if (isKnown && routeFare > 0) {
         currentRouteData = { km: routeKm, fare: routeFare, time: routeTime };
-        routeInfoText.textContent = `\u2708\uFE0F ${pickupName} \u2192 ${dropName} \u2022 ~${routeKm} km \u2022 ${routeTime} \u2022 Sedan from \u20B9${routeFare.toLocaleString("en-IN")}`;
+        routeInfoText.textContent = `\u2708\uFE0F ${pickupName} \u2192 ${dropName} \u2022 ~${routeKm} km \u2022 ${routeTime} \u2022 Starting from \u20B9${routeFare.toLocaleString("en-IN")} (Sedan)${dtPart}`;
     } else {
         currentRouteData = null;
-        routeInfoText.textContent = `\u2708\uFE0F ${pickupName} \u2192 ${dropName} \u2022 Call 79855 78937 for exact fare`;
+        routeInfoText.textContent = `\u2708\uFE0F ${pickupName} \u2192 ${dropName} \u2022 Starting from \u20B9${CUSTOM_PER_KM}/km (Sedan) \u2022 Call 79855 78937${dtPart}`;
     }
 
     routeInfoBar.style.display = "block";
@@ -680,14 +837,30 @@ function handleSearch() {
 }
 
 function clearRoute() {
+    directionMode = "from";
     selectedPickup = "lucknow-airport";
     selectedDrop = "";
     currentRouteData = null;
-    pickupInput.value = "Lucknow Airport (Amausi)";
+    pickupInput.value = "Chaudhary Charan Singh Airport, Lucknow";
+    pickupInput.readOnly = true;
     pickupValue.value = "lucknow-airport";
     dropInput.value = "";
+    dropInput.readOnly = false;
+    dropInput.placeholder = "Type destination...";
     dropValue.value = "";
     routeInfoBar.style.display = "none";
+    // Reset direction toggle
+    document.querySelectorAll('.dir-option').forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.toggle('active', val === 'from');
+        opt.querySelector('input').checked = val === 'from';
+    });
+    // Reset fare display
+    const fareDisplay = document.getElementById('fareDisplay');
+    if (fareDisplay) {
+        fareDisplay.innerHTML = '<span class="fare-empty">Select drop —</span>';
+        fareDisplay.classList.remove('has-fare');
+    }
 }
 
 // ─── Scroll Reveal (Intersection Observer) ───

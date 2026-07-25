@@ -113,37 +113,84 @@
                 <span class="since-line"></span>
             </div>
 
-            <!-- Booking Search Bar -->
-            <div class="booking-bar reveal">
-                <div class="booking-field search-field">
-                    <label>✈️ PICKUP</label>
-                    <div class="search-input-wrap">
-                        <input type="text" id="pickupInput" class="search-input" value="Lucknow Airport (Amausi)" readonly style="cursor:default; opacity:0.85;">
+            <!-- Trip Type Tabs -->
+            <div class="trip-tabs reveal">
+                <label class="trip-tab active" data-trip="airport">
+                    <input type="radio" name="tripType" value="airport" checked>
+                    <span class="tab-radio"></span> Airport
+                </label>
+                <label class="trip-tab" data-trip="outstation-oneway">
+                    <input type="radio" name="tripType" value="outstation-oneway">
+                    <span class="tab-radio"></span> Outstation One-Way
+                </label>
+                <label class="trip-tab" data-trip="outstation-roundtrip">
+                    <input type="radio" name="tripType" value="outstation-roundtrip">
+                    <span class="tab-radio"></span> Outstation Round-Trip
+                </label>
+                <label class="trip-tab" data-trip="hourly">
+                    <input type="radio" name="tripType" value="hourly">
+                    <span class="tab-radio"></span> Hourly Rental
+                </label>
+            </div>
+
+            <!-- Airport Booking Card -->
+            <div class="booking-card reveal" id="airportBookingCard">
+                <!-- Direction Toggle -->
+                <div class="direction-toggle">
+                    <label class="dir-option active">
+                        <input type="radio" name="direction" value="from" checked>
+                        <span class="dir-dot"></span> From Airport
+                    </label>
+                    <label class="dir-option">
+                        <input type="radio" name="direction" value="to">
+                        <span class="dir-dot"></span> To Airport
+                    </label>
+                </div>
+
+                <!-- Route Fields -->
+                <div class="route-fields">
+                    <div class="route-field" id="fieldFrom">
+                        <span class="field-marker field-marker--origin"></span>
+                        <div class="field-content">
+                            <label>Airport Name</label>
+                            <input type="text" id="pickupInput" class="route-input" value="Chaudhary Charan Singh Airport, Lucknow" readonly>
+                        </div>
+                        <input type="hidden" id="pickupValue" value="lucknow-airport">
                     </div>
-                    <input type="hidden" id="pickupValue" value="lucknow-airport">
-                </div>
-                <div class="booking-field search-field">
-                    <label>📍 DROP</label>
-                    <div class="search-input-wrap">
-                        <input type="text" id="dropInput" class="search-input" placeholder="Type destination..." autocomplete="off">
-                        <div class="search-dropdown" id="dropDropdown"></div>
+                    <div class="route-connector">
+                        <div class="connector-line"></div>
+                        <button class="swap-btn" id="swapBtn" type="button" aria-label="Swap locations">⇅</button>
                     </div>
-                    <input type="hidden" id="dropValue" value="">
-                </div>
-                <div class="booking-field booking-field--date">
-                    <label for="travelDate">📅 Date</label>
-                    <input type="date" id="travelDate">
-                </div>
-                <div class="booking-field booking-field--fare">
-                    <label>💰 Fare</label>
-                    <div class="fare-display" id="fareDisplay">
-                        <span class="fare-empty">Select drop —</span>
+                    <div class="route-field" id="fieldTo">
+                        <span class="field-marker field-marker--drop">📍</span>
+                        <div class="field-content search-field">
+                            <label>Drop Location</label>
+                            <input type="text" id="dropInput" class="route-input" placeholder="Type destination..." autocomplete="off">
+                            <div class="search-dropdown" id="dropDropdown"></div>
+                        </div>
+                        <input type="hidden" id="dropValue" value="">
                     </div>
                 </div>
-                <button class="booking-btn" id="searchBtn">
-                    Find My Cab
-                    <span class="btn-arrow">→</span>
-                </button>
+
+                <!-- Action Row -->
+                <div class="booking-actions">
+                    <button class="search-cabs-btn" id="searchBtn" type="button">
+                        Search Cabs
+                    </button>
+                    <div class="booking-meta">
+                        <div class="meta-field">
+                            <label for="travelDate">📅</label>
+                            <input type="date" id="travelDate">
+                        </div>
+                        <div class="meta-field">
+                            <label for="travelTime">🕐</label>
+                            <input type="time" id="travelTime">
+                        </div>
+                        <div class="fare-display" id="fareDisplay">
+                            <span class="fare-empty">Select drop —</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -166,6 +213,16 @@
                 <div class="trust-item">
                     <span class="trust-icon">🕐</span>
                     <span>24/7 Service</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <span class="trust-icon">👨‍✈️</span>
+                    <span>Verified Drivers</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <span class="trust-icon">💰</span>
+                    <span>All Cost Included</span>
                 </div>
             </div>
         </div>
