@@ -505,29 +505,12 @@ function updateFareDisplay(fare, km) {
 function initTripTabs() {
     document.querySelectorAll('.trip-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-            const tripType = tab.dataset.trip;
             // Update active states
             document.querySelectorAll('.trip-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-
-            if (tripType === 'airport') {
-                airportBookingCard.style.display = 'block';
-            } else {
-                airportBookingCard.style.display = 'none';
-                // Show booking popup for other trip types
-                const tripLabels = {
-                    'outstation-oneway': 'Outstation One-Way Trip',
-                    'outstation-roundtrip': 'Outstation Round-Trip',
-                    'hourly': 'Hourly Rental Package'
-                };
-                showBookingPopup(tripLabels[tripType] || tripType, 'package');
-                // Reset to airport tab after popup
-                setTimeout(() => {
-                    document.querySelector('.trip-tab[data-trip="airport"]').classList.add('active');
-                    tab.classList.remove('active');
-                    airportBookingCard.style.display = 'block';
-                }, 300);
-            }
+            
+            // For all tabs, keep the booking card visible so users can enter their location
+            airportBookingCard.style.display = 'block';
         });
     });
 }
