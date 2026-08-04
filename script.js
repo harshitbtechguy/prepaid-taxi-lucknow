@@ -287,6 +287,7 @@ function closeBookingPopup() {
 function renderLocalRoutes() {
     const grid = document.getElementById("localRoutesGrid");
     if (!grid) return;
+    grid.classList.add("visible");
     grid.innerHTML = localRoutes.map(r => `
         <div class="local-route-card">
             <div class="local-route-icon">${r.icon}</div>
@@ -309,6 +310,8 @@ function renderOutstationRoutes() {
     const featuredGrid = document.getElementById("featuredRoutesGrid");
     const secondaryGrid = document.getElementById("secondaryRoutesGrid");
     if (!featuredGrid) return;
+    featuredGrid.classList.add("visible");
+    if (secondaryGrid) secondaryGrid.classList.add("visible");
 
     const featured = outstationRoutes.filter(r => r.featured);
     const secondary = outstationRoutes.filter(r => !r.featured);
@@ -909,7 +912,7 @@ function initScrollReveal() {
                 entry.target.classList.add("visible");
             }
         });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.01, rootMargin: "0px 0px 50px 0px" });
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 }
