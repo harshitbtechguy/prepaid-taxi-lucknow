@@ -471,6 +471,7 @@ function updateFareDisplay(fare, km) {
     const fareDisplay = document.getElementById('fareDisplay');
     const fareAmount = document.getElementById('fareAmount');
     const fareKm = document.getElementById('fareKm');
+    const searchBtn = document.getElementById('searchBtn');
     const modalDestination = document.getElementById('modalDestination');
     
     if (modalDestination && dropInput.value) {
@@ -485,14 +486,17 @@ function updateFareDisplay(fare, km) {
     if (f > 0) {
         fareAmount.textContent = `₹${f.toLocaleString('en-IN')}`;
         fareKm.textContent = k > 0 ? `(${k} km)` : '';
-        fareDisplay.style.display = 'flex';
+        fareDisplay.style.display = 'block';
+        if (searchBtn) searchBtn.style.display = 'none';
     } else if (k > 0) {
         const estFare = k * CUSTOM_PER_KM;
         fareAmount.textContent = `₹${estFare.toLocaleString('en-IN')}`;
         fareKm.textContent = `(${k} km)`;
-        fareDisplay.style.display = 'flex';
+        fareDisplay.style.display = 'block';
+        if (searchBtn) searchBtn.style.display = 'none';
     } else {
         fareDisplay.style.display = 'none';
+        if (searchBtn) searchBtn.style.display = 'block';
     }
 }
 
@@ -673,29 +677,34 @@ function setFilter(filter) {
 
 // ─── Submit Booking via WhatsApp ───
 function submitBooking() {
-    const destination = document.getElementById('modalDestination').value || dropInput.value || "Outstation";
-    const date = document.getElementById('modalDate').value;
-    const time = document.getElementById('modalTime').value;
-    const flight = document.getElementById('modalFlight').value;
-    const passengers = document.getElementById('modalPassengers').value;
-    const vehicle = document.getElementById('modalVehicle').value;
-    const name = document.getElementById('modalNameInput').value;
+    const modalDestinationEl = document.getElementById('modalDestination');
+    const destination = (modalDestinationEl ? modalDestinationEl.value : "") || (typeof dropInput !== 'undefined' ? dropInput.value : "") || "Outstation";
+    
+    const date = document.getElementById('modalDate') ? document.getElementById('modalDate').value : "";
+    const time = document.getElementById('modalTime') ? document.getElementById('modalTime').value : "";
+    const flight = document.getElementById('modalFlight') ? document.getElementById('modalFlight').value : "";
+    const passengers = document.getElementById('modalPassengers') ? document.getElementById('modalPassengers').value : "";
+    const vehicle = document.getElementById('modalVehicle') ? document.getElementById('modalVehicle').value : "";
+    const name = document.getElementById('modalNameInput') ? document.getElementById('modalNameInput').value : "";
     
     // Check if round-trip
     const tripTypeEl = document.querySelector('.trip-tab.active input');
     const tripType = tripTypeEl && tripTypeEl.value === 'outstation-roundtrip' ? 'Round-Trip' : 'One-Way';
 
-    let msg = `*New Booking Request*%0A`;
-    msg += `Name: ${name}%0A`;
-    msg += `From: Lucknow Airport%0A`;
-    msg += `To: ${destination} (${tripType})%0A`;
-    msg += `Date & Time: ${date} at ${time}%0A`;
-    msg += `Flight No: ${flight}%0A`;
-    msg += `Passengers: ${passengers}%0A`;
+    let msg = `*New Booking Request*\n`;
+    msg += `Name: ${name}\n`;
+    msg += `From: Lucknow Airport\n`;
+    msg += `To: ${destination} (${tripType})\n`;
+    msg += `Date & Time: ${date} at ${time}\n`;
+    msg += `Flight No: ${flight}\n`;
+    msg += `Passengers: ${passengers}\n`;
     msg += `Vehicle: ${vehicle}`;
 
-    window.open(`https://wa.me/917985578937?text=${msg}`, '_blank');
-    document.getElementById('bookingModal').classList.remove('active');
+    const encodedMsg = encodeURIComponent(msg);
+    window.open(`https://wa.me/917985578937?text=${encodedMsg}`, '_blank');
+    
+    const modal = document.getElementById('bookingModal');
+    if (modal) modal.classList.remove('active');
 }
 
 // ─── Search / Route Selection ───
@@ -728,7 +737,9 @@ function clearRoute() {
     currentRouteData = null;
     routeInfoBar.style.display = "none";
     const fareDisplay = document.getElementById('fareDisplay');
+    const searchBtn = document.getElementById('searchBtn');
     if (fareDisplay) fareDisplay.style.display = "none";
+    if (searchBtn) searchBtn.style.display = "block";
 }
 
 // ─── Scroll Reveal (Intersection Observer) ───

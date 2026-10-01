@@ -137,20 +137,28 @@
                         <input type="hidden" id="dropValue" value="">
                     </div>
                     
-                    <button class="search-cabs-btn" id="searchBtn" type="button" style="padding: 15px 30px; font-size: 1.1rem;">
-                        Get Fare
-                    </button>
-                </div>
-
-                <div class="fare-display" id="fareDisplay" style="display: none; margin-top: 20px; align-items: center; justify-content: space-between;">
-                    <div>
-                        <div class="fare-label-sm">Starting from</div>
-                        <div style="display: flex; align-items: baseline; gap: 10px;">
-                            <div class="fare-amount" id="fareAmount">₹--</div>
-                            <div class="fare-km" id="fareKm">--</div>
+                    <div class="action-container" style="display: flex; flex: 1; max-width: 320px; position: relative;">
+                        <!-- Default Search Button -->
+                        <button class="search-cabs-btn" id="searchBtn" type="button" style="width: 100%; padding: 15px 30px; font-size: 1.1rem;">
+                            Get Fare
+                        </button>
+                        
+                        <!-- Split Fare / Book Button (Hidden Initially) -->
+                        <div id="fareDisplay" style="display: none; width: 100%; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-accent);">
+                            <div style="display: flex; width: 100%; height: 100%;">
+                                <!-- Left side: Fare Info -->
+                                <div style="flex: 1; padding: 5px 10px; background: rgba(34, 211, 238, 0.1); display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 2px solid var(--accent);">
+                                    <div style="font-size: 0.6rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Starting from</div>
+                                    <div style="display: flex; align-items: baseline; gap: 4px;">
+                                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary);" id="fareAmount">₹--</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary);" id="fareKm">--</div>
+                                    </div>
+                                </div>
+                                <!-- Right side: Book Taxi -->
+                                <button class="book-direct-btn" id="bookDirectBtn" style="flex: 1; background: var(--accent); color: #04070d; font-weight: bold; border: none; cursor: pointer; padding: 10px; font-size: 1rem; transition: background 0.2s;" onclick="document.getElementById('bookingModal').classList.add('active')">Book Taxi</button>
+                            </div>
                         </div>
                     </div>
-                    <button class="search-cabs-btn book-direct-btn" id="bookDirectBtn" style="background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer;" onclick="document.getElementById('bookingModal').classList.add('active')">Book Taxi</button>
                 </div>
             </div>
 
