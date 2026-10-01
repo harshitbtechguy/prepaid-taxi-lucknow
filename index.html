@@ -70,26 +70,33 @@
                 <span class="logo-since">Since 1998</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#fleet">Our Vehicles</a></li>
-                <li><a href="#routes">Popular Routes</a></li>
-                <li><a href="#packages">Packages</a></li>
+                <li><a href="#hero">Airport → Outstation</a></li>
+                <li><a href="#outstation">Popular Routes</a></li>
+                <li><a href="#fleet">Vehicles</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="tel:+917985578937" class="nav-cta">
-                <span class="phone-icon">📞</span> 79855 78937
-            </a>
+            <div class="nav-right-actions" style="display: flex; gap: 10px; align-items: center;">
+                <a href="tel:+917985578937" class="nav-btn call-btn">📞 Call Now</a>
+                <a href="https://wa.me/917985578937" class="nav-btn wa-btn" target="_blank">📱 WhatsApp</a>
+                <button class="nav-btn book-btn" onclick="document.getElementById('dropInput').focus()">Book Taxi</button>
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="#fleet">Our Vehicles</a></li>
-                <li><a href="#routes">Popular Routes</a></li>
+                <li><a href="#hero">Airport → Outstation</a></li>
+                <li><a href="#outstation">Popular Routes</a></li>
+                <li><a href="#fleet">Vehicles</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="tel:+917985578937" class="mobile-call-btn">📞 Call Now — 79855 78937</a></li>
+                <li class="mobile-action-buttons" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <a href="tel:+917985578937" class="nav-btn call-btn" style="width: 100%; justify-content: center;">📞 Call Now</a>
+                    <a href="https://wa.me/917985578937" class="nav-btn wa-btn" target="_blank" style="width: 100%; justify-content: center;">📱 WhatsApp</a>
+                    <button class="nav-btn book-btn" style="width: 100%; justify-content: center;" onclick="document.getElementById('dropInput').focus(); document.getElementById('mobileMenu').classList.remove('active');">Book Taxi</button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -99,145 +106,80 @@
         <div class="hero-bg-overlay"></div>
         <div class="hero-particles" id="heroParticles"></div>
 
-        <!-- Animated airplane -->
-        <div class="airplane-track">
-            <div class="airplane">✈️</div>
-        </div>
-
         <div class="hero-content">
-            <div class="airport-badge reveal">
-                <span class="badge-dot"></span>
-                Lucknow Airport (Amausi) — Official Pre-Paid Counter
-            </div>
-            <h1 class="hero-title reveal">
-                Authorized Airport Pickup &<br>
-                <span class="accent">Intercity Transfer Service</span>
-            </h1>
-            <p class="hero-subtitle reveal">
-                Trusted airport taxi network operating from Lucknow Airport since 1998. Clean AC cabs for Ayodhya, Kanpur, Dudhwa, Nepal Border &amp; more.
-            </p>
-            <div class="hero-since-badge reveal">
-                <span class="since-line"></span>
-                <span class="since-text">Trusted Since 1998</span>
-                <span class="since-line"></span>
-            </div>
+            <h1 class="hero-title reveal">Just Landed at <span class="accent">Lucknow Airport?</span></h1>
+            <p class="hero-subtitle reveal">Book a direct prepaid taxi to your city.</p>
+            <p class="hero-supporting reveal" style="max-width: 600px; margin: 10px auto 30px; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.5;">Own fleet of airport-based taxis for Ayodhya, Kanpur, Prayagraj, Varanasi, Gorakhpur, Agra and 50+ destinations.</p>
 
-            <!-- Trip Type Tabs -->
-            <div class="trip-tabs reveal">
-                <label class="trip-tab active" data-trip="airport">
-                    <input type="radio" name="tripType" value="airport" checked>
-                    <span class="tab-radio"></span> Airport
-                </label>
-                <label class="trip-tab" data-trip="outstation-oneway">
-                    <input type="radio" name="tripType" value="outstation-oneway">
-                    <span class="tab-radio"></span> Outstation One-Way
-                </label>
-                <label class="trip-tab" data-trip="outstation-roundtrip">
-                    <input type="radio" name="tripType" value="outstation-roundtrip">
-                    <span class="tab-radio"></span> Outstation Round-Trip
-                </label>
-                <label class="trip-tab" data-trip="hourly">
-                    <input type="radio" name="tripType" value="hourly">
-                    <span class="tab-radio"></span> Hourly Rental
-                </label>
-            </div>
-
-            <!-- Airport Booking Card -->
+            <!-- Unified Booking Widget -->
             <div class="booking-card reveal" id="airportBookingCard">
-                <!-- Direction Toggle -->
-                <div class="direction-toggle">
-                    <label class="dir-option active">
-                        <input type="radio" name="direction" value="from" checked>
-                        <span class="dir-dot"></span> From Airport
+                <h3 style="margin-bottom: 15px; color: var(--text-primary); text-align: left; font-size: 1.2rem;">Where are you going?</h3>
+                
+                <!-- Trip Tabs (Simplified) -->
+                <div class="trip-tabs">
+                    <label class="trip-tab active" data-trip="outstation-oneway">
+                        <input type="radio" name="tripType" value="outstation-oneway" checked>
+                        <span class="tab-radio"></span> One-Way
                     </label>
-                    <label class="dir-option">
-                        <input type="radio" name="direction" value="to">
-                        <span class="dir-dot"></span> To Airport
+                    <label class="trip-tab" data-trip="outstation-roundtrip">
+                        <input type="radio" name="tripType" value="outstation-roundtrip">
+                        <span class="tab-radio"></span> Round-Trip
                     </label>
                 </div>
-
+                
                 <!-- Unified Booking Form Row -->
-                <div class="booking-form-row">
-                    <div class="route-field" id="fieldFrom">
-                        <div class="field-content">
-                            <label id="lblFrom">From</label>
-                            <input type="text" id="pickupInput" class="route-input" value="Chaudhary Charan Singh Airport, Lucknow" readonly>
-                        </div>
-                        <input type="hidden" id="pickupValue" value="lucknow-airport">
-                    </div>
-                    
-                    <button class="swap-btn" id="swapBtn" type="button" aria-label="Swap locations">⇅</button>
-                    
-                    <div class="route-field" id="fieldTo">
-                        <div class="field-content search-field">
-                            <label id="lblTo">To</label>
-                            <input type="text" id="dropInput" class="route-input" placeholder="Type destination..." autocomplete="off">
+                <div class="booking-form-row widget-form-row">
+                    <div class="route-field search-field" id="fieldTo">
+                        <div class="field-content" style="padding: 5px;">
+                            <input type="text" id="dropInput" class="route-input" placeholder="Enter your destination (e.g. Ayodhya)" autocomplete="off" style="font-size: 1.2rem; padding: 15px;">
                             <div class="search-dropdown" id="dropDropdown"></div>
                         </div>
                         <input type="hidden" id="dropValue" value="">
                     </div>
-
-                    <div class="meta-field">
-                        <label for="travelDate" id="lblDepDate">Departure</label>
-                        <input type="date" id="travelDate">
-                    </div>
-                    <div class="meta-field" id="returnDateField" style="display: none;">
-                        <label for="returnDate">Return</label>
-                        <input type="date" id="returnDate">
-                    </div>
                     
-                    <div class="meta-field">
-                        <label for="travelTime" id="lblDepTime">Time</label>
-                        <input type="time" id="travelTime">
-                    </div>
-                    <div class="meta-field" id="returnTimeField" style="display: none;">
-                        <label for="returnTime">Drop</label>
-                        <input type="time" id="returnTime">
-                    </div>
-
-                    <div class="fare-display" id="fareDisplay" style="display: none;">
-                        <div class="fare-label-sm">Starting from</div>
-                        <div class="fare-amount" id="fareAmount">₹--</div>
-                        <div class="fare-km" id="fareKm">--</div>
-                    </div>
-
-                    <button class="search-cabs-btn" id="searchBtn" type="button">
-                        Book Cab
+                    <button class="search-cabs-btn" id="searchBtn" type="button" style="padding: 15px 30px; font-size: 1.1rem;">
+                        Get Fare
                     </button>
                 </div>
-            </div>
 
+                <div class="fare-display" id="fareDisplay" style="display: none; margin-top: 20px; align-items: center; justify-content: space-between;">
+                    <div>
+                        <div class="fare-label-sm">Starting from</div>
+                        <div style="display: flex; align-items: baseline; gap: 10px;">
+                            <div class="fare-amount" id="fareAmount">₹--</div>
+                            <div class="fare-km" id="fareKm">--</div>
+                        </div>
+                    </div>
+                    <button class="search-cabs-btn book-direct-btn" id="bookDirectBtn" style="background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer;" onclick="document.getElementById('bookingModal').classList.add('active')">Book Taxi</button>
+                </div>
+            </div>
 
             <div class="hero-trust reveal">
                 <div class="trust-item">
-                    <span class="trust-icon">🛡️</span>
-                    <span>Fixed Rates</span>
+                    <span class="trust-icon" style="color:var(--accent);">✓</span>
+                    <span>Fixed Fare</span>
                 </div>
                 <div class="trust-divider"></div>
                 <div class="trust-item">
-                    <span class="trust-icon">❄️</span>
-                    <span>AC Vehicles</span>
+                    <span class="trust-icon" style="color:var(--accent);">✓</span>
+                    <span>Own Fleet</span>
                 </div>
                 <div class="trust-divider"></div>
                 <div class="trust-item">
-                    <span class="trust-icon">💯</span>
-                    <span>100% Cost Included</span>
+                    <span class="trust-icon" style="color:var(--accent);">✓</span>
+                    <span>Airport-Based</span>
                 </div>
                 <div class="trust-divider"></div>
                 <div class="trust-item">
-                    <span class="trust-icon">🕐</span>
+                    <span class="trust-icon" style="color:var(--accent);">✓</span>
+                    <span>Professional Drivers</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <span class="trust-icon" style="color:var(--accent);">✓</span>
                     <span>24/7 Service</span>
                 </div>
-                <div class="trust-divider"></div>
-                <div class="trust-item">
-                    <span class="trust-icon">👨‍✈️</span>
-                    <span>Verified Drivers</span>
-                </div>
             </div>
-        </div>
-        <div class="hero-scroll-indicator">
-            <span>Scroll Down</span>
-            <div class="scroll-arrow"></div>
         </div>
     </section>
 
@@ -248,19 +190,6 @@
             <button class="route-clear-btn" id="routeClearBtn">✕ Clear</button>
         </div>
     </div>
-
-    <!-- =================== LOCAL DESTINATIONS =================== -->
-    <section class="local-routes-section" id="routes">
-        <div class="section-container">
-            <p class="section-tag reveal">📍 Local Transfers</p>
-            <h2 class="section-title reveal">Popular Local <span class="accent">Destinations</span></h2>
-            <p class="section-subtitle reveal">Quick airport transfers within Lucknow city.</p>
-            <div class="local-routes-grid" id="localRoutesGrid">
-                <!-- Rendered by JS -->
-            </div>
-            <p class="routes-note reveal">* Sedan rates shown. SUV & Innova rates slightly higher. Call for exact quote.</p>
-        </div>
-    </section>
 
     <!-- =================== OUTSTATION ROUTES =================== -->
     <section class="outstation-section" id="outstation">
@@ -400,13 +329,13 @@
     <section class="how-section" id="how-it-works">
         <div class="section-container">
             <p class="section-tag reveal">⚡ How It Works</p>
-            <h2 class="section-title reveal">How Airport <span class="accent">Pickup Works</span></h2>
+            <h2 class="section-title reveal">Your Journey Starts at <span class="accent">Lucknow Airport</span></h2>
             <div class="steps-grid">
                 <div class="step-card reveal">
                     <div class="step-number">01</div>
-                    <div class="step-icon">📞</div>
-                    <h3>Book Before Landing</h3>
-                    <p>Call or WhatsApp us before your flight lands and share your destination and preferred vehicle.</p>
+                    <div class="step-icon">🛬</div>
+                    <h3>LAND</h3>
+                    <p>Arrive at Lucknow Airport.</p>
                 </div>
                 <div class="step-connector reveal">
                     <div class="connector-line"></div>
@@ -414,9 +343,9 @@
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">02</div>
-                    <div class="step-icon">🛬</div>
-                    <h3>Driver Waits at Airport Pickup Area</h3>
-                    <p>Your driver will be ready near the authorized airport pickup zone before you exit arrivals.</p>
+                    <div class="step-icon">📱</div>
+                    <h3>BOOK</h3>
+                    <p>Choose your destination and taxi.</p>
                 </div>
                 <div class="step-connector reveal">
                     <div class="connector-line"></div>
@@ -424,9 +353,32 @@
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">03</div>
+                    <div class="step-icon">🤝</div>
+                    <h3>MEET</h3>
+                    <p>Meet your driver at the designated airport pickup point.</p>
+                </div>
+                <div class="step-connector reveal">
+                    <div class="connector-line"></div>
+                    <div class="connector-dot"></div>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">04</div>
                     <div class="step-icon">🚗</div>
-                    <h3>Meet &amp; Ride</h3>
-                    <p>Meet your driver, load your luggage, and begin your fixed-fare journey comfortably.</p>
+                    <h3>TRAVEL</h3>
+                    <p>Travel directly to your destination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== AIRPORT ADVANTAGE =================== -->
+    <section class="authorized-pickup-section">
+        <div class="section-container">
+            <div class="authorized-pickup-card reveal">
+                <div class="authorized-pickup-icon">🛬</div>
+                <div class="authorized-pickup-content">
+                    <h2 class="authorized-pickup-title">Your Taxi Is Already at Lucknow Airport</h2>
+                    <p class="authorized-pickup-text">Unlike online-only taxi aggregators, Pre-Paid Taxi Seva Samiti operates its taxi service from Lucknow Airport. Book your outstation journey directly from the airport and travel straight to your destination.</p>
                 </div>
             </div>
         </div>
@@ -436,64 +388,32 @@
     <section class="why-section">
         <div class="section-container">
             <p class="section-tag reveal">💎 Why Choose Us</p>
-            <h2 class="section-title reveal">What Makes Us <span class="accent">Different</span></h2>
+            <h2 class="section-title reveal">Why Book Your Airport <span class="accent">Taxi With Us?</span></h2>
             <div class="why-grid why-grid--three">
                 <div class="why-card reveal">
+                    <div class="why-icon">🚗</div>
+                    <h3>OWN FLEET</h3>
+                    <p>Travel in taxis operated by our own fleet.</p>
+                </div>
+                <div class="why-card reveal">
                     <div class="why-icon">🛬</div>
-                    <h3>Airport-Based Pickup</h3>
-                    <p>Cabs available directly from Lucknow Airport pickup area for faster departures after landing.</p>
-                </div>
-                <div class="why-card reveal">
-                    <div class="why-icon">🏆</div>
-                    <h3>25+ Years of Trusted Service</h3>
-                    <p>Serving travellers, families, tourists, and business passengers since 1998.</p>
-                </div>
-                <div class="why-card reveal">
-                    <div class="why-icon">🛣️</div>
-                    <h3>Intercity &amp; Outstation Specialists</h3>
-                    <p>Reliable airport transfers to Ayodhya, Kanpur, Dudhwa, Nepal Border, Varanasi &amp; more.</p>
+                    <h3>AIRPORT BASED</h3>
+                    <p>Our taxis operate from Lucknow Airport.</p>
                 </div>
                 <div class="why-card reveal">
                     <div class="why-icon">🛡️</div>
-                    <h3>Fixed Rates</h3>
-                    <p>Fair and reliable pricing for every trip with no last-minute surprises.</p>
+                    <h3>FIXED PREPAID FARES</h3>
+                    <p>Know your fare before you travel.</p>
                 </div>
                 <div class="why-card reveal">
                     <div class="why-icon">👨‍✈️</div>
-                    <h3>Verified Drivers</h3>
-                    <p>Background-checked, uniformed, professional drivers who know all routes and city locations.</p>
+                    <h3>PROFESSIONAL DRIVERS</h3>
+                    <p>Experienced drivers for comfortable long-distance journeys.</p>
                 </div>
                 <div class="why-card reveal">
                     <div class="why-icon">🕐</div>
-                    <h3>24/7 Availability</h3>
-                    <p>Available around the clock. Whether your flight lands at dawn or midnight, we're here.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =================== AUTHORIZED AIRPORT PICKUP TRUST BLOCK =================== -->
-    <section class="authorized-pickup-section">
-        <div class="section-container">
-            <div class="authorized-pickup-card reveal">
-                <div class="authorized-pickup-icon">🛬</div>
-                <div class="authorized-pickup-content">
-                    <h2 class="authorized-pickup-title">Authorized Airport Pickup Service</h2>
-                    <p class="authorized-pickup-text">Operating directly from Lucknow Airport premises with professional drivers and fixed-fare airport transfers since 1998.</p>
-                </div>
-                <div class="authorized-pickup-badges">
-                    <div class="ap-badge">
-                        <span class="ap-badge-icon">✓</span>
-                        <span>Airport Premises</span>
-                    </div>
-                    <div class="ap-badge">
-                        <span class="ap-badge-icon">✓</span>
-                        <span>Since 1998</span>
-                    </div>
-                    <div class="ap-badge">
-                        <span class="ap-badge-icon">✓</span>
-                        <span>Fixed Fares</span>
-                    </div>
+                    <h3>24/7 SERVICE</h3>
+                    <p>Book your airport-to-city journey whenever you land.</p>
                 </div>
             </div>
         </div>
@@ -615,17 +535,68 @@
         </div>
     </section>
 
+    <!-- =================== FAQ SECTION =================== -->
+    <section class="faq-section" id="faqs">
+        <div class="section-container" style="max-width: 800px; margin: 0 auto;">
+            <p class="section-tag reveal">❓ Frequently Asked Questions</p>
+            <h2 class="section-title reveal" style="text-align: center; margin-bottom: 40px;">Airport-to-Outstation <span class="accent">Taxi FAQs</span></h2>
+            
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <h4><span>Q:</span> How can I book a taxi from Lucknow Airport?</h4>
+                    <p>A: You can book your taxi by filling out the booking form on our website, sending a WhatsApp message with your flight details, or calling our 24/7 helpline.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> Can I book a taxi after landing at Lucknow Airport?</h4>
+                    <p>A: Yes! Since our fleet is based at Lucknow Airport, you can call us or book via WhatsApp as soon as you land. We will arrange a vehicle within minutes.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> Do you provide one-way taxi service from Lucknow Airport?</h4>
+                    <p>A: Absolutely. Our core service is providing direct one-way transfers from Lucknow Airport to outstation destinations like Kanpur, Ayodhya, Prayagraj, and Varanasi.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> How much does a taxi from Lucknow Airport to Ayodhya cost?</h4>
+                    <p>A: The fixed fare for a Sedan (Etios/Dzire) from Lucknow Airport to Ayodhya is ₹3,250. For an SUV (Ertiga) or Innova, the fare will be slightly higher.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> How much luggage can I carry?</h4>
+                    <p>A: Sedans can accommodate 2-3 standard bags. SUVs like Ertiga and Innova can handle 4-5 bags. Please select the right vehicle based on your luggage.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> Can I choose my vehicle? / Can I book an SUV?</h4>
+                    <p>A: Yes, you can choose between Sedan (Etios/Dzire), SUV (Ertiga), or Innova/Crysta while making your booking.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> Do you provide taxis 24/7?</h4>
+                    <p>A: Yes, our airport pickup service is operational 24/7 to align with all domestic and international flight arrivals at Lucknow Airport.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> How do I find my driver at Lucknow Airport?</h4>
+                    <p>A: Once booked, we share the driver's contact and vehicle details via WhatsApp. The driver will meet you near the designated arrivals pickup point.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> Is the fare fixed?</h4>
+                    <p>A: Yes, we provide fixed, prepaid fares for outstation routes, so you know exactly how much you'll pay before you travel. No hidden surprises.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>Q:</span> Do you provide taxis to cities outside Uttar Pradesh?</h4>
+                    <p>A: Yes, we offer intercity transportation from Lucknow Airport to destinations in neighboring states, such as Delhi, Patna, and cities in Uttarakhand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- =================== CTA BANNER =================== -->
     <section class="cta-section">
-        <div class="cta-container reveal">
+        <div class="cta-container reveal" style="max-width: 800px;">
             <div class="cta-airplane">✈️</div>
-            <h2>Just Landed at <span class="accent">Lucknow Airport?</span></h2>
-            <p>Call us right now. Your cab is a 2-minute walk from the arrivals gate.</p>
-            <a href="tel:+917985578937" class="cta-call-btn">
-                <span class="call-pulse"></span>
-                📞 79855 78937
-            </a>
-            <span class="cta-subtext">Available 24×7 • Fixed Rates • AC Cabs</span>
+            <h2>Landing at <span class="accent">Lucknow Airport?</span></h2>
+            <p>Book your direct taxi to your destination.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <a href="#booking" onclick="document.querySelector('.search-input').focus(); return false;" class="cta-call-btn" style="background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 12px 24px;">Get Fare</a>
+                <a href="#bookingModal" onclick="document.getElementById('bookingModal').classList.add('active'); return false;" class="cta-call-btn" style="padding: 12px 24px;">Book Your Taxi</a>
+                <a href="https://wa.me/917985578937?text=Hi%2C%20I%20want%20to%20book%20a%20taxi%20from%20Lucknow%20Airport." target="_blank" class="cta-call-btn" style="background: #25D366; padding: 12px 24px; color: #fff;">WhatsApp Us</a>
+            </div>
         </div>
     </section>
 
@@ -706,26 +677,15 @@
     <!-- =================== SEO FOOTER LINKS =================== -->
     <section class="seo-links-section">
         <div class="section-container">
-            <h3 class="seo-links-title">Popular Airport Taxi Searches</h3>
+            <h3 class="seo-links-title">Pre-Paid Taxi Seva Samiti</h3>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">Airport → Outstation Taxi Service</p>
             <div class="seo-links-grid">
-                <a href="pre-paid-taxi-lucknow-airport.html">Pre Paid Taxi Lucknow Airport</a>
-                <a href="pre-paid-taxi-lucknow-airport.html">Airport Pickup Service Lucknow</a>
-                <a href="pre-paid-taxi-lucknow-airport.html">Authorized Airport Taxi Lucknow</a>
                 <a href="routes/lucknow-airport-to-ayodhya-taxi.html">Lucknow Airport to Ayodhya Taxi</a>
-                <a href="routes/lucknow-airport-to-varanasi-taxi.html">Lucknow Airport to Varanasi Taxi</a>
-                <a href="routes/lucknow-airport-to-prayagraj-taxi.html">Lucknow Airport to Prayagraj Taxi</a>
                 <a href="routes/lucknow-airport-to-kanpur-taxi.html">Lucknow Airport to Kanpur Taxi</a>
-                <a href="routes/lucknow-airport-to-dudhwa-national-park-taxi.html">Lucknow Airport to Dudhwa Taxi</a>
-                <a href="routes/lucknow-airport-to-nepal-border-taxi.html">Lucknow Airport to Nepal Border Taxi</a>
-                <a href="routes/lucknow-airport-to-bahraich-taxi.html">Lucknow Airport to Bahraich Taxi</a>
-                <a href="routes/lucknow-airport-to-gonda-taxi.html">Lucknow Airport to Gonda Taxi</a>
-                <a href="routes/lucknow-airport-to-shravasti-taxi.html">Lucknow Airport to Shravasti Taxi</a>
-                <a href="routes/lucknow-airport-to-sitapur-taxi.html">Lucknow Airport to Sitapur Taxi</a>
+                <a href="routes/lucknow-airport-to-prayagraj-taxi.html">Lucknow Airport to Prayagraj Taxi</a>
+                <a href="routes/lucknow-airport-to-varanasi-taxi.html">Lucknow Airport to Varanasi Taxi</a>
                 <a href="routes/lucknow-airport-to-gorakhpur-taxi.html">Lucknow Airport to Gorakhpur Taxi</a>
                 <a href="routes/lucknow-airport-to-agra-taxi.html">Lucknow Airport to Agra Taxi</a>
-                <a href="routes/lucknow-airport-to-hardoi-cab.html">Lucknow Airport to Hardoi Cab</a>
-                <a href="routes/lucknow-airport-to-lakhimpur-taxi.html">Lucknow Airport to Lakhimpur Taxi</a>
-                <a href="routes/lucknow-airport-to-barabanki-taxi.html">Lucknow Airport to Barabanki Taxi</a>
             </div>
         </div>
     </section>
@@ -738,42 +698,38 @@
                     <span class="logo-icon">✈️</span>
                     <span class="logo-text">Pre-Paid<span class="accent">Taxi</span></span>
                 </a>
-                <p>Airport-authorized pre-paid taxi and intercity transfer service operating from Lucknow Airport since 1998. Trusted by travellers for reliable pickups, fixed fares, and comfortable outstation journeys across Uttar Pradesh and North India.</p>
+                <p>Airport-authorized pre-paid taxi and intercity transfer service operating from Lucknow Airport. Trusted by travellers for reliable pickups, fixed fares, and comfortable outstation journeys.</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#fleet">Our Vehicles</a></li>
-                    <li><a href="#routes">Local Routes</a></li>
-                    <li><a href="#outstation">Outstation</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#vehicles">Vehicles</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-routes">
-                <h4>Top Routes</h4>
-                <ul>
-                    <li><a href="routes/lucknow-airport-to-ayodhya-taxi.html">Airport → Ayodhya</a></li>
-                    <li><a href="routes/lucknow-airport-to-kanpur-taxi.html">Airport → Kanpur</a></li>
-                    <li><a href="routes/lucknow-airport-to-varanasi-taxi.html">Airport → Varanasi</a></li>
-                    <li><a href="routes/lucknow-airport-to-prayagraj-cab.html">Airport → Prayagraj</a></li>
-                    <li><a href="routes/lucknow-airport-to-gorakhpur-taxi.html">Airport → Gorakhpur</a></li>
-                    <li><a href="routes/lucknow-airport-to-agra-taxi.html">Airport → Agra</a></li>
-                    <li><a href="routes/lucknow-airport-to-hardoi-cab.html">Airport → Hardoi</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>Contact Us</h4>
+                <h4>Contact Details</h4>
                 <ul>
-                    <li>📞 <a href="tel:+917985578937">+91 79855 78937</a></li>
-                    <li>📍 3 Number Bagh, Amausi, Lucknow</li>
-                    <li>✈️ Near Lucknow Airport (CCS Airport)</li>
-                    <li>🕐 Open 24 hours, 7 days a week</li>
+                    <li>📞 <a href="tel:+917985578937">Phone: +91 79855 78937</a></li>
+                    <li>📱 <a href="https://wa.me/917985578937">WhatsApp: +91 79855 78937</a></li>
+                    <li>✉️ Email: info@prepaidtaxisevasamitilko.com</li>
+                    <li>✈️ Airport Location: Lucknow Airport (CCS Airport)</li>
+                </ul>
+            </div>
+            <div class="footer-legal">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="cancellation.html">Cancellation Policy</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Pre-Paid Taxi Service, Lucknow Airport. All rights reserved.</p>
+            <p>© 2026 Pre-Paid Taxi Seva Samiti. All rights reserved.</p>
         </div>
     </footer>
 
@@ -806,14 +762,81 @@
         </div>
     </div>
 
+    <!-- =================== BOOKING MODAL =================== -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal" id="bookingModalContent">
+            <button class="modal-close" onclick="document.getElementById('bookingModal').classList.remove('active')">✕</button>
+            <div class="modal-body">
+                <div class="modal-details" style="width: 100%; max-width: 100%;">
+                    <h2>Book Your Airport Taxi</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Fill in your details below and we will confirm your taxi immediately via WhatsApp.</p>
+                    
+                    <form id="bookingForm" onsubmit="event.preventDefault(); submitBooking();">
+                        <div class="meta-field" style="margin-bottom: 15px;">
+                            <label>Destination City</label>
+                            <input type="text" id="modalDestination" value="" readonly style="background: #f5f5f5;">
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                            <div class="meta-field">
+                                <label>Travel Date</label>
+                                <input type="date" id="modalDate" required>
+                            </div>
+                            <div class="meta-field">
+                                <label>Pickup Time</label>
+                                <input type="time" id="modalTime" required>
+                            </div>
+                        </div>
+
+                        <div class="meta-field" style="margin-bottom: 15px;">
+                            <label>Flight Number (Important for Airport Pickup)</label>
+                            <input type="text" id="modalFlight" placeholder="e.g. 6E 2145" required>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                            <div class="meta-field">
+                                <label>Passengers</label>
+                                <select id="modalPassengers" required style="width:100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px;">
+                                    <option value="1-2">1-2 Passengers</option>
+                                    <option value="3-4">3-4 Passengers</option>
+                                    <option value="5-6">5-6 Passengers</option>
+                                    <option value="7+">7+ Passengers</option>
+                                </select>
+                            </div>
+                            <div class="meta-field">
+                                <label>Vehicle Preference</label>
+                                <select id="modalVehicle" required style="width:100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px;">
+                                    <option value="Sedan">Sedan (Etios/Dzire)</option>
+                                    <option value="SUV">SUV (Ertiga)</option>
+                                    <option value="Innova">Innova/Crysta</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="meta-field" style="margin-bottom: 25px;">
+                            <label>Your Name</label>
+                            <input type="text" id="modalNameInput" placeholder="Enter your full name" required>
+                        </div>
+
+                        <button type="submit" class="search-cabs-btn" style="width: 100%; padding: 15px; font-size: 1.1rem; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <span>Book on WhatsApp</span>
+                            <svg viewBox="0 0 32 32" width="20" height="20"><path fill="#fff" d="M16 0C7.16 0 0 7.16 0 16c0 2.83.74 5.48 2.03 7.78L.07 31.93l8.35-1.9A15.9 15.9 0 0016 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm8.2 22.56c-.34.96-1.7 1.76-2.76 1.99-.72.15-1.66.28-4.83-1.04-4.05-1.68-6.65-5.81-6.85-6.08-.2-.27-1.6-2.13-1.6-4.07 0-1.93 1.02-2.88 1.38-3.27.36-.39.79-.49 1.05-.49.26 0 .53 0 .76.01.24.02.57-.1.89.68.34.81 1.14 2.79 1.24 2.99.1.2.17.44.03.71-.13.27-.2.44-.4.68-.2.24-.42.53-.6.71-.2.2-.4.42-.17.82.23.4 1.03 1.7 2.21 2.75 1.52 1.36 2.8 1.78 3.2 1.98.4.2.63.17.87-.1.23-.27.99-1.16 1.26-1.56.26-.4.53-.33.89-.2.36.14 2.3 1.09 2.7 1.28.4.2.66.3.76.46.1.17.1.96-.24 1.88z"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- =================== FLOATING CTAs =================== -->
     <a href="https://wa.me/917985578937?text=Hi%2C%20I%20need%20a%20taxi%20from%20Lucknow%20Airport." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 32 32" width="28" height="28"><path fill="#fff" d="M16 0C7.16 0 0 7.16 0 16c0 2.83.74 5.48 2.03 7.78L.07 31.93l8.35-1.9A15.9 15.9 0 0016 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm8.2 22.56c-.34.96-1.7 1.76-2.76 1.99-.72.15-1.66.28-4.83-1.04-4.05-1.68-6.65-5.81-6.85-6.08-.2-.27-1.6-2.13-1.6-4.07 0-1.93 1.02-2.88 1.38-3.27.36-.39.79-.49 1.05-.49.26 0 .53 0 .76.01.24.02.57-.1.89.68.34.81 1.14 2.79 1.24 2.99.1.2.17.44.03.71-.13.27-.2.44-.4.68-.2.24-.42.53-.6.71-.2.2-.4.42-.17.82.23.4 1.03 1.7 2.21 2.75 1.52 1.36 2.8 1.78 3.2 1.98.4.2.63.17.87-.1.23-.27.99-1.16 1.26-1.56.26-.4.53-.33.89-.2.36.14 2.3 1.09 2.7 1.28.4.2.66.3.76.46.1.17.1.96-.24 1.88z"/></svg>
     </a>
 
-    <div class="mobile-sticky-cta">
-        <a href="https://wa.me/917985578937?text=Hi%2C%20I%20need%20a%20taxi%20from%20Lucknow%20Airport." target="_blank" class="sticky-wa-btn">💬 WhatsApp</a>
-        <a href="tel:+917985578937" class="sticky-call-btn">📞 Call Now</a>
+    <div class="mobile-sticky-cta" style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 5px;">
+        <a href="https://wa.me/917985578937?text=Hi%2C%20I%20need%20a%20taxi%20from%20Lucknow%20Airport." target="_blank" class="sticky-wa-btn" style="text-align: center; border-radius: 4px;">💬 WhatsApp</a>
+        <a href="tel:+917985578937" class="sticky-call-btn" style="text-align: center; border-radius: 4px;">📞 Call</a>
+        <button class="sticky-book-btn" onclick="document.getElementById('dropInput').focus(); window.scrollTo({top: 0, behavior: 'smooth'});" style="background: var(--accent); color: white; border: none; font-weight: bold; border-radius: 4px; padding: 12px; font-size: 0.9rem;">🚕 Book Taxi</button>
     </div>
 
     <script src="script.js"></script>
